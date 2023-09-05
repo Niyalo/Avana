@@ -5,7 +5,7 @@ import { Button } from '@/components'
 const er = () => {
 
   const requestList = enrollReqs.map(items => (
-    <div className="cursor-pointer w-full px-8 py-4 border bg-white0 border-grey50 rounded-sm justify-start items-center gap-6 inline-flex hover:bg-white100">
+    <div className="cursor-pointer w-full px-8 py-4 border bg-white0 border-grey50 rounded-sm justify-start items-center gap-6 inline-flex hover:bg-white50">
     <p className="text-sm">{items.id}</p>
     <div className="grow shrink basis-0 justify-between items-center flex">
         <div className="flex-col justify-start items-start gap-1 inline-flex">
@@ -13,8 +13,8 @@ const er = () => {
             <p className='text-sm'>Request By: {items.request}</p>
         </div>
         <div className='flex gap-2'>
-            <Button label="Accept" type="accept"/>
-            <Button label="Decline" type="decline"/>
+            <Button label="none" type="accept"/>
+            <Button label="none" type="decline"/>
         </div>
     </div>
     </div>

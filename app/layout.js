@@ -1,5 +1,5 @@
 import './globals.css'
-import localFont from '@next/font/local'
+import localFont from 'next/font/local'
 
 const ayuthaya = localFont({
   src: './Ayuthaya.ttf',
@@ -8,7 +8,7 @@ const ayuthaya = localFont({
 
 export const metadata = {
   title: 'Avana Game Studio LLC',
-  description: 'WebApp for Avana',
+  description: 'WebApp for Avana Game Studio LLC',
 }
 
 export default function RootLayout({ children }) {

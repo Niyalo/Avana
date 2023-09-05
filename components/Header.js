@@ -2,6 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 import LogoutIcon from '@mui/icons-material/Logout';
 import { Button } from '@/components'
+import Link from 'next/link';
 
 const Header = () => {
   return (
@@ -14,7 +15,7 @@ const Header = () => {
         />
         <div className='flex gap-6 items-center'>
             <p>Half Guy</p>
-            <Button type="logout" />
+            <Link href="/"><Button type="logout" /></Link>
         </div>
     </div>
   )

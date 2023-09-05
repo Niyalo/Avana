@@ -2,6 +2,7 @@
 
 import { Close } from '@mui/icons-material'
 import React, { useState } from 'react'
+import Link from 'next/link';
 
 const Login = ({isVisible, onClose}) => {
 
@@ -65,10 +66,11 @@ const Login = ({isVisible, onClose}) => {
                         required
                     />
                 </div>
-                <input
+                <Link href="/admin/vp" className='w-full'><input
                     type='submit'
-                    className='flex h-max border text-white50 justify-center border-secondary gap-2 bg-primary py-2 px-4 rounded-full items-center cursor-pointer'
-                />
+                    value="Login"
+                    className='flex w-full h-max border text-white50 justify-center border-secondary gap-2 bg-primary py-2 px-4 rounded-full items-center cursor-pointer'
+                /></Link>
             </form>
         </div>
     </div>

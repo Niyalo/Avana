@@ -1,4 +1,4 @@
-import { Add, ArrowRight, Cancel, Check, Edit, Logout, Person } from '@mui/icons-material'
+import { Add, AppRegistration, ArrowRight, Cancel, Check, Edit, Login, Logout, Mail, Person } from '@mui/icons-material'
 import React from 'react'
 
 const Button = (props) => {
@@ -10,6 +10,22 @@ const Button = (props) => {
                 <div className='buttons border-secondary bg-white50'>
                     <Logout className="text-lg text-primary" />
                     <p className='text-primary'>Logout</p>
+                </div>
+            )
+
+        case "register":
+            return(
+                <div className='buttons border-secondary gap-2 bg-white50'>
+                    <AppRegistration className="text-lg text-primary" />
+                    <p className='text-primary'>Register</p>
+                </div>
+            )
+        
+        case "login":
+            return(
+                <div className='buttons px-8 border-secondary bg-primary'>
+                    <Login className="text-lg text-white50" />
+                    <p className='text-white50'>Login</p>
                 </div>
             )
 
@@ -34,6 +50,14 @@ const Button = (props) => {
             </div>
         )
 
+        case "mail":
+        return(
+            <div id='mail' className={`buttons border-secondary gap-2 bg-primary ${props.label==="none"? `py-4` : ``}`}>
+                <Mail className="text-lg text-white50" />
+                {props.label==="none"? '':<p className='text-white50'>{props.label}</p>}
+            </div>
+        )
+
         case "add":
         return(
             <div className='buttons border-secondary gap-2 bg-primary'>
@@ -52,17 +76,17 @@ const Button = (props) => {
 
         case "accept":
         return(
-            <div className='buttons border-green bg-green'>
+            <div className={`buttons border-green gap-2 bg-green ${props.label==="none"? `py-4` : ``}`}>
                 <Check className="text-lg text-white50" />
-                <p className='text-white50'>{props.label}</p>
+                {props.label==="none"? '':<p className='text-white50'>{props.label}</p>}
             </div>
         )
 
         case "decline":
         return(
-            <div className='buttons border-red bg-red'>
+            <div className={`buttons border-red gap-2 bg-red ${props.label==="none"? `py-4` : ``}`}>
                 <Cancel className="text-lg text-white50" />
-                <p className='text-white50'>{props.label}</p>
+                {props.label==="none"? '':<p className='text-white50'>{props.label}</p>}
             </div>
         )
     }

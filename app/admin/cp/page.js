@@ -30,6 +30,13 @@ const cp = () => {
                 cols={80} 
             />
         </div>
+        <div className='flex flex-col gap-2 h-max'>
+            <h4 className='text-primary'>Project Deadline</h4>
+            <div className='flex gap-8 w-full'>
+              <label className='flex w-full whitespace-nowrap items-center gap-4 text-primary'>Start Date: <input type="date" placeholder='Start Date' className='text-base bg-white100 text-black150 rounded-sm focus:outline-none p-2 px-4 w-max'/></label>
+              <label className='flex w-full whitespace-nowrap items-center gap-4 text-primary'>End Date: <input type="date" placeholder='End Date' className='text-base bg-white100 text-black150 rounded-sm focus:outline-none p-2 px-4 w-max'/></label>
+            </div>
+        </div>
       </div> 
     </div>
   )

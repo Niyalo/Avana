@@ -2,6 +2,7 @@
 
 import { Close } from '@mui/icons-material'
 import React, { useState } from 'react'
+import Link from 'next/link';
 
 const Register = ({isVisible, onClose}) => {
 
@@ -162,10 +163,11 @@ const Register = ({isVisible, onClose}) => {
                         <h4 className='text-primary text-center'>Profile Image</h4>
                     </div>
                 </div>
-                <input
+                <Link href="/logged"><input
                     type='submit'
-                    className='flex h-max border text-white50 justify-center border-secondary gap-2 bg-primary py-2 px-4 rounded-full items-center cursor-pointer'
-                />
+                    value="Register"
+                    className='w-full flex h-max border text-white50 justify-center border-secondary gap-2 bg-primary py-2 px-4 rounded-full items-center cursor-pointer'
+                /></Link>
             </form>
         </div>
     </div>

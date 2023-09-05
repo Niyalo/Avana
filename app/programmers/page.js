@@ -4,6 +4,7 @@ import { Header, Topbar, Button } from '@/components'
 import React from 'react'
 import Image from 'next/image'
 import projects from '@/content/projects';
+import { LocationCity, Mail, Phone } from '@mui/icons-material';
 
 const profile = () => {
 
@@ -44,10 +45,10 @@ const profile = () => {
                         <p>Programmer</p>
                     </div>
                 </div>
-                <div>
-                   <div className='flex gap-4'><p>Email:</p><p> halfguy@gmail.com</p></div>
-                   <div className='flex gap-4'><p>Address:</p><p> Gongabu, Ktm</p></div>
-                   <div className='flex gap-4'> <p>Phone:</p><p> +977 00000000</p></div>
+                <div className='flex flex-col gap-2'>
+                   <div className='flex gap-4'><Mail className='text-xl text-primary'/><p> halfguy@gmail.com</p></div>
+                   <div className='flex gap-4'><LocationCity className='text-xl text-primary' /><p> Gongabu, Ktm</p></div>
+                   <div className='flex gap-4'><Phone className='text-xl text-primary' /><p> +977 00000000</p></div>
                 </div>
             </div>
             <div className='flex h-[400px] gap-6 w-full'>

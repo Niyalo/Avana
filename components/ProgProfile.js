@@ -46,7 +46,7 @@ const ProgProfile = ({isVisible, onClose}) => {
                 <div onClick={() => onClose()}><Close className='text-3xl hover:scale-105 border bg-red cursor-pointer rounded-sm text-white50'/></div>
             </div>
             <div className='bg-white50 h-4/5 w-full rounded-sm relative'>
-                <Topbar label1="All" label2="Completed" label3="Cancelled" />
+                <Topbar label1="Current" label2="Completed" label3="Cancelled" />
                 <div className='flex flex-col mt-4 h-5/6 w-full overflow-y-scroll overflow-x-hidden'>
                     {enrolledProjects}
                 </div>

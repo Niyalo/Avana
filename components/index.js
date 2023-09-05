@@ -6,6 +6,9 @@ import AdminNavbar from "./AdminNavbar";
 import Register from "./Register";
 import Login from "./Login";
 import ProgProfile from "./ProgProfile";
+import Mail from "./Mail";
+import EnrollProgrammers from "./EnrollProgrammers";
+import NewApplications from "./NewApplications";
 
 export{
     Homepage,
@@ -15,5 +18,8 @@ export{
     AdminNavbar,
     Register,
     Login,
-    ProgProfile
+    ProgProfile,
+    Mail,
+    EnrollProgrammers,
+    NewApplications
 }

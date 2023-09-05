@@ -4,11 +4,9 @@ import React, { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import homecontent from '@/content/homeContent'
 import {Button, Login, Register} from '@/components'
+import Link from 'next/link';
 
-const Homepage = () => {
-
-  const [popupReg, setPopupReg] = useState(false);
-  const [popupLog, setPopupLog] = useState(false);
+const logged = () => {
 
   const scrollContainer1 = useRef(null);
   const scrollContainer2 = useRef(null); // Create a ref for the scrollable container
@@ -64,9 +62,6 @@ const Homepage = () => {
   ))
 
   return (
-    <div className='h-screen w-screen'>
-      <Register isVisible={popupReg} onClose={() => setPopupReg(false)}/>
-      <Login isVisible={popupLog} onClose={() => setPopupLog(false)}/>
       <div className='main h-screen relative py-2 flex flex-col justify-between gap-5'>
         <div className='flex justify-between w-full gap-10'>
           <Image 
@@ -77,13 +72,16 @@ const Homepage = () => {
             className='bg-white50 p-2 px-6 rounded-sm box-content'
           />
           <div className='flex justify-between bg-white50 rounded-sm grow py-4 px-4'>
-              <div className='flex flex-col'>
-                    <h3 className='text-primary'>Welcome to Avana</h3>
-                    <p>Register or Login to proceed.</p>
+              <div className='flex gap-4 items-center'>
+                  <Image src="/demo.png" width={40} height={40} layout="fixed" className='border-2 h-[40px] object-cover object-top overflow-hidden rounded-full border-secondary'/>
+                  <div className='flex flex-col'>
+                      <h4 className='text-primary'>Half Guy</h4>
+                      <p>Architect</p>
+                  </div>
               </div>
               <div className='flex gap-4'>
-                <div onClick={() => setPopupLog(true)}><Button type="login" /></div>
-                <div onClick={() => setPopupReg(true)}><Button type="register" /></div>
+                <Link href="/programmers"><Button type="profile" /></Link>
+                <Link href="/"><Button type="logout" /></Link>
               </div>
           </div>
         </div>
@@ -101,8 +99,7 @@ const Homepage = () => {
         </div>
         <p className='relative text-center bottom-0'>Copyright @ Avana Game Studio LLC</p>
       </div>
-    </div>
   )
 }
 
-export default Homepage
+export default logged
