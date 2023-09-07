@@ -1,7 +1,7 @@
 "use client";
 
 import { Close } from '@mui/icons-material'
-import React, { useState } from 'react'
+import React, { Fragment, useState } from 'react'
 import Link from 'next/link';
 
 const Register = ({isVisible, onClose}) => {
@@ -34,7 +34,7 @@ const Register = ({isVisible, onClose}) => {
         <div className='main flex flex-col mx-80 h-4/5 p-6 bg-white50 rounded-sm gap-8 shadow-lg'>
             <div className='flex justify-between items-center'>
                 <h3 className='text-primary'> Register </h3>
-                <div onClick={() => onClose()}><Close className='text-3xl rounded-sm hover:scale-105 border bg-red cursor-pointer text-white50'/></div>
+                <Fragment onClick={() => onClose()}><Close className='text-3xl rounded-sm hover:scale-105 border bg-red cursor-pointer text-white50'/></Fragment>
             </div>
             <form className='flex flex-col gap-8 pr-4 overflow-y-scroll'>
                 <div className='flex gap-6'>

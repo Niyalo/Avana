@@ -51,14 +51,14 @@ const Homepage = () => {
 
   const programmers = homecontent.programmers.map(items => (
     <div className='flex flex-col items-center gap-4'>
-      <div className='relative w-24 h-24'><Image src={`/images/home/${items.img}`} fill={true} objectFit='cover' className='border-2 object-top overflow-hidden rounded-full border-secondary object-cover'/></div>
+      <div className='relative w-24 h-24'><Image src={`./images/home/${items.img}`} fill={true} objectFit='cover' className='border-2 object-top overflow-hidden rounded-full border-secondary object-cover'/></div>
       <p>{items.name}</p>
     </div>
   ))
     
   const architects = homecontent.architects.map(items =>(
     <div className='flex flex-col items-center gap-4'>
-      <div className='relative w-24 h-24'><Image src={`/images/home/${items.img}`} fill={true} objectFit='cover' className='border-2 object-top overflow-hidden rounded-full border-secondary object-cover'/></div>
+      <div className='relative w-24 h-24'><Image src={`./images/home/${items.img}`} fill={true} objectFit='cover' className='border-2 object-top overflow-hidden rounded-full border-secondary object-cover'/></div>
       <p>{items.name}</p>
     </div>
   ))

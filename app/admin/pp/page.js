@@ -19,7 +19,7 @@ const pp = () => {
     <p id="popupOpener" className="text-sm">{items.id}</p>
     <div id="popupOpener" className="grow shrink basis-0 justify-between items-center flex">
         <div id="popupOpener" className='flex gap-4 items-center'>
-            <Image id="popupOpener" src={`/${items.src}`} width={50} height={50} layout="fixed" className='border-2 h-[50px] object-cover object-top overflow-hidden rounded-full border-secondary'/>
+            <Image id="popupOpener" src={`./${items.src}`} width={50} height={50} layout="fixed" className='border-2 h-[50px] object-cover object-top overflow-hidden rounded-full border-secondary'/>
             <div id="popupOpener" className='flex flex-col'>
                 <p id="popupOpener" className='text-primary'>{items.name}</p>
                 <p id="popupOpener" className='text-sm'>{items.title}</p>

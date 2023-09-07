@@ -32,7 +32,7 @@ const ProgProfile = ({isVisible, onClose}) => {
             <div className='flex justify-between items-center'>
                 <div className='flex gap-40 items-center'>
                     <div className='flex gap-4 items-center'>
-                        <Image src="/demo.png" width={60} height={60} layout="fixed" className='border-2 h-[60px] object-cover object-top overflow-hidden rounded-full border-secondary'/>
+                        <Image src="./demo.png" width={60} height={60} layout="fixed" className='border-2 h-[60px] object-cover object-top overflow-hidden rounded-full border-secondary'/>
                         <div className='flex flex-col'>
                             <h3 className='text-primary'>Half Guy</h3>
                             <p>Programmer</p>
