@@ -65,7 +65,7 @@ const logged = () => {
       <div className='main h-screen relative py-2 flex flex-col justify-between gap-5'>
         <div className='flex justify-between w-full gap-10'>
           <Image 
-            src='./avana_logo.svg'
+            src='../avana_logo.svg'
             width={100}
             height={100}
             alt='Avana Logo'
@@ -73,7 +73,7 @@ const logged = () => {
           />
           <div className='flex justify-between bg-white50 rounded-sm grow py-4 px-4'>
               <div className='flex gap-4 items-center'>
-                  <Image src="/demo.png" width={40} height={40} layout="fixed" className='border-2 h-[40px] object-cover object-top overflow-hidden rounded-full border-secondary'/>
+                  <Image src="./demo.png" width={40} height={40} layout="fixed" className='border-2 h-[40px] object-cover object-top overflow-hidden rounded-full border-secondary'/>
                   <div className='flex flex-col'>
                       <h4 className='text-primary'>Half Guy</h4>
                       <p>Architect</p>

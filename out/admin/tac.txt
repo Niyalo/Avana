@@ -1,11 +1,11 @@
 1:HL["/_next/static/css/3ef60963fe406cf7.css",{"as":"style"}]
-0:["866wFByZA1MrC3edpahfQ",[[["",{"children":["admin",{"children":["tac",{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],"$L2",[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/3ef60963fe406cf7.css","precedence":"next"}]],"$L3"]]]]
+0:["yULOQY3Rx-9pwrlZXM0Xv",[[["",{"children":["admin",{"children":["tac",{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],"$L2",[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/3ef60963fe406cf7.css","precedence":"next"}]],"$L3"]]]]
 4:I{"id":7767,"chunks":["272:static/chunks/webpack-e24894e0a553d925.js","971:static/chunks/fd9d1056-1a9e07ca5e34b998.js","596:static/chunks/596-4d8cf31258254d5a.js"],"name":"default","async":false}
 5:I{"id":7920,"chunks":["272:static/chunks/webpack-e24894e0a553d925.js","971:static/chunks/fd9d1056-1a9e07ca5e34b998.js","596:static/chunks/596-4d8cf31258254d5a.js"],"name":"default","async":false}
-6:I{"id":3222,"chunks":["97:static/chunks/97-301b54373125d3ad.js","452:static/chunks/452-2fda36c601f86276.js","91:static/chunks/app/admin/layout-3739f12b9d25f6f3.js"],"name":"Image","async":false}
-7:I{"id":6685,"chunks":["97:static/chunks/97-301b54373125d3ad.js","452:static/chunks/452-2fda36c601f86276.js","91:static/chunks/app/admin/layout-3739f12b9d25f6f3.js"],"name":"","async":false}
-8:I{"id":9104,"chunks":["97:static/chunks/97-301b54373125d3ad.js","452:static/chunks/452-2fda36c601f86276.js","91:static/chunks/app/admin/layout-3739f12b9d25f6f3.js"],"name":"","async":false}
-9:I{"id":2184,"chunks":["97:static/chunks/97-301b54373125d3ad.js","452:static/chunks/452-2fda36c601f86276.js","91:static/chunks/app/admin/layout-3739f12b9d25f6f3.js"],"name":"","async":false}
+6:I{"id":3222,"chunks":["97:static/chunks/97-301b54373125d3ad.js","452:static/chunks/452-2fda36c601f86276.js","91:static/chunks/app/admin/layout-42c4612d1485d1b1.js"],"name":"Image","async":false}
+7:I{"id":6685,"chunks":["97:static/chunks/97-301b54373125d3ad.js","452:static/chunks/452-2fda36c601f86276.js","91:static/chunks/app/admin/layout-42c4612d1485d1b1.js"],"name":"","async":false}
+8:I{"id":9104,"chunks":["97:static/chunks/97-301b54373125d3ad.js","452:static/chunks/452-2fda36c601f86276.js","91:static/chunks/app/admin/layout-42c4612d1485d1b1.js"],"name":"","async":false}
+9:I{"id":2184,"chunks":["97:static/chunks/97-301b54373125d3ad.js","452:static/chunks/452-2fda36c601f86276.js","91:static/chunks/app/admin/layout-42c4612d1485d1b1.js"],"name":"","async":false}
 b:I{"id":4839,"chunks":["272:static/chunks/webpack-e24894e0a553d925.js","971:static/chunks/fd9d1056-1a9e07ca5e34b998.js","596:static/chunks/596-4d8cf31258254d5a.js"],"name":"default","async":false}
 c:I{"id":6626,"chunks":["97:static/chunks/97-301b54373125d3ad.js","452:static/chunks/452-2fda36c601f86276.js","320:static/chunks/app/admin/tac/page-9aab87622641e017.js"],"name":"","async":false}
 3:[["$","meta","0",{"charSet":"utf-8"}],["$","title","1",{"children":"Avana Game Studio LLC"}],["$","meta","2",{"name":"description","content":"WebApp for Avana Game Studio LLC"}],["$","meta","3",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
