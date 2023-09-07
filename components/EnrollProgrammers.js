@@ -11,7 +11,7 @@ const EnrollProgrammers = ({isVisible, onClose}) => {
         <p className="text-sm">{items.id}</p>
         <div className="grow shrink basis-0 justify-between items-center flex">
             <div className='flex gap-4 items-center'>
-                <Image src={`./${items.src}`} width={40} height={40} layout="fixed" className='border-2 h-[40px] object-cover object-top overflow-hidden rounded-full border-secondary'/>
+                <Image src={`../${items.src}`} width={40} height={40} layout="fixed" className='border-2 h-[40px] object-cover object-top overflow-hidden rounded-full border-secondary'/>
                 <div className='flex flex-col'>
                     <p className='text-primary'>{items.name}</p>
                     <p className='text-sm'>{items.title}</p>
@@ -27,7 +27,7 @@ const EnrollProgrammers = ({isVisible, onClose}) => {
         <p className="text-sm">{items.id}</p>
         <div className="grow shrink basis-0 justify-between items-center flex">
             <div className='flex gap-4 items-center'>
-                <Image src={`./${items.src}`} width={40} height={40} layout="fixed" className='border-2 h-[40px] object-cover object-top overflow-hidden rounded-full border-secondary'/>
+                <Image src={`../${items.src}`} width={40} height={40} layout="fixed" className='border-2 h-[40px] object-cover object-top overflow-hidden rounded-full border-secondary'/>
                 <div className='flex flex-col'>
                     <p className='text-primary'>{items.name}</p>
                     <p className='text-sm'>{items.title}</p>

@@ -49,14 +49,14 @@ const logged = () => {
 
   const programmers = homecontent.programmers.map(items => (
     <div className='flex flex-col items-center gap-4'>
-      <div className='relative w-24 h-24'><Image src={`/images/home/${items.img}`} fill={true} objectFit='cover' className='border-2 object-top overflow-hidden rounded-full border-secondary object-cover'/></div>
+      <div className='relative w-24 h-24'><Image src={`./images/home/${items.img}`} fill={true} objectFit='cover' className='border-2 object-top overflow-hidden rounded-full border-secondary object-cover'/></div>
       <p>{items.name}</p>
     </div>
   ))
     
   const architects = homecontent.architects.map(items =>(
     <div className='flex flex-col items-center gap-4'>
-      <div className='relative w-24 h-24'><Image src={`/images/home/${items.img}`} fill={true} objectFit='cover' className='border-2 object-top overflow-hidden rounded-full border-secondary object-cover'/></div>
+      <div className='relative w-24 h-24'><Image src={`./images/home/${items.img}`} fill={true} objectFit='cover' className='border-2 object-top overflow-hidden rounded-full border-secondary object-cover'/></div>
       <p>{items.name}</p>
     </div>
   ))
@@ -65,7 +65,7 @@ const logged = () => {
       <div className='main h-screen relative py-2 flex flex-col justify-between gap-5'>
         <div className='flex justify-between w-full gap-10'>
           <Image 
-            src='../avana_logo.svg'
+            src='./avana_logo.svg'
             width={100}
             height={100}
             alt='Avana Logo'
