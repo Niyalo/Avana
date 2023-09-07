@@ -80,7 +80,7 @@ const logged = () => {
                   </div>
               </div>
               <div className='flex gap-4'>
-                <Link href="/programmers"><Button type="profile" /></Link>
+                <Link href="/programmers/profile"><Button type="profile" /></Link>
                 <Link href="/"><Button type="logout" /></Link>
               </div>
           </div>
