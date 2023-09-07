@@ -8,7 +8,7 @@ const Header = () => {
   return (
     <div className='flex justify-between items-center'>
         <Image 
-          src='./avana_logo.svg'
+          src='../avana_logo.svg'
           width={100}
           height={100}
           alt='Avana Logo'
