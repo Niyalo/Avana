@@ -227,7 +227,7 @@ const Register = ({isVisible, onClose}) => {
                     <p className='text-red'>The Email already exists</p>
                 </div>
             </div>
-            <div className={`${popup=="emailAddress"? 'fixed': 'hidden'} absolute flex self-center w-full h-max bottom-0 items-center justify-center`}>
+            <div className={`${popup=="userAddress"? 'fixed': 'hidden'} absolute flex self-center w-full h-max bottom-0 items-center justify-center`}>
                 <div className='flex text-center w-full flex-col p-3 bg-white50 rounded-sm gap-8 shadow-lg'>
                     <p className='text-red'>The Email and Username already exists</p>
                 </div>

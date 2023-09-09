@@ -66,8 +66,8 @@ const logged = () => {
         <div className='flex justify-between w-full gap-10'>
           <Image 
             src='./avana_logo.svg'
-            width={100}
-            height={100}
+            width={160}
+            height={160}
             alt='Avana Logo'
             className='bg-white50 p-2 px-6 rounded-sm box-content'
           />
