@@ -28,8 +28,12 @@ const Register = ({isVisible, onClose}) => {
         }))
         if (form.username=="halfguy") {
             setPopup("username")
-        }else if(form.emailAddress=="nothalfguy@gmail.com"){
+        }
+        if(form.emailAddress=="nothalfguy@gmail.com"){
             setPopup("emailAddress")
+        }
+        if(form.emailAddress=="nothalfguy@gmail.com" && form.username=="halfguy"){
+            setPopup("userAddress")
         }
     }
 
@@ -41,7 +45,7 @@ const Register = ({isVisible, onClose}) => {
 
   return (
     <div id="closer" onClick={handleClose} className='bg-black100 bg-opacity-25 fixed w-screen h-screen z-10 flex items-center justify-center backdrop-blur-sm'>
-        <div className='main flex flex-col mx-80 h-4/5 p-6 bg-white50 rounded-sm gap-8 shadow-lg'>
+        <div className='main relative flex flex-col mx-80 h-4/5 p-6 bg-white50 rounded-sm gap-8 shadow-lg'>
             <div className='flex justify-between items-center'>
                 <h3 className='text-primary'> Register </h3>
                 <div onClick={() => onClose()}><Close className='text-3xl rounded-sm hover:scale-105 border bg-red cursor-pointer text-white50'/></div>
@@ -221,6 +225,11 @@ const Register = ({isVisible, onClose}) => {
             <div className={`${popup=="emailAddress"? 'fixed': 'hidden'} absolute flex self-center w-full h-max bottom-0 items-center justify-center`}>
                 <div className='flex text-center w-full flex-col p-3 bg-white50 rounded-sm gap-8 shadow-lg'>
                     <p className='text-red'>The Email already exists</p>
+                </div>
+            </div>
+            <div className={`${popup=="emailAddress"? 'fixed': 'hidden'} absolute flex self-center w-full h-max bottom-0 items-center justify-center`}>
+                <div className='flex text-center w-full flex-col p-3 bg-white50 rounded-sm gap-8 shadow-lg'>
+                    <p className='text-red'>The Email and Username already exists</p>
                 </div>
             </div>
         </div>
