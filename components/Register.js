@@ -3,14 +3,19 @@
 import { Close } from '@mui/icons-material'
 import React, { Fragment, useState } from 'react'
 import Link from 'next/link';
+import registerInfo from '@/content/registerInfo';
 
 const Register = ({isVisible, onClose}) => {
+
+    const [popup, setPopup] = useState("none")
 
     const [form, setForm] = useState({
         firstName: '',
         lastName: '',
         homeAddress: '',
         emailAddress: '',
+        password:'',
+        confPassword:'',
         phone: '',
         username: '',
         gender: ''
@@ -21,6 +26,11 @@ const Register = ({isVisible, onClose}) => {
             ...form,
             [e.target.name] : e.target.value
         }))
+        if (form.username=="halfguy") {
+            setPopup("username")
+        }else if(form.emailAddress=="nothalfguy@gmail.com"){
+            setPopup("emailAddress")
+        }
     }
 
     if(!isVisible) return null;
@@ -107,6 +117,40 @@ const Register = ({isVisible, onClose}) => {
                         required
                     />
                 </div>
+                <div className='w-full'>
+                    <label
+                        htmlFor="password"
+                        className='formLabel'
+                    >
+                        Enter Password*
+                    </label>
+                    <input
+                        type='password'
+                        id='password'
+                        name='password'
+                        onChange={handleChange}
+                        placeholder='Enter your password'
+                        className='formInput'
+                        required
+                    />
+                </div>
+                <div className='w-full'>
+                    <label
+                        htmlFor="confPassword"
+                        className='formLabel'
+                    >
+                        Confirm Password*
+                    </label>
+                    <input
+                        type='password'
+                        id='confPassword'
+                        name='confPassword'
+                        onChange={handleChange}
+                        placeholder='Confirm your password'
+                        className='formInput'
+                        required
+                    />
+                </div>
                 <div className='flex gap-6'>
                     <div className='flex w-full flex-col gap-8'>
                         <div className='w-full'>
@@ -169,6 +213,16 @@ const Register = ({isVisible, onClose}) => {
                     className='w-full flex h-max border text-white50 justify-center border-secondary gap-2 bg-primary py-2 px-4 rounded-full items-center cursor-pointer'
                 /></Link>
             </form>
+            <div className={`${popup=="username"? 'fixed': 'hidden'} flex bg-black100 bg-opacity-25 w-full h-full z-20 items-center justify-center backdrop-blur-sm`}>
+                <div className='flex flex-col mx-80 h-4/5 p-6 bg-white50 rounded-sm gap-8 shadow-lg'>
+                    <h3>The Username already exists</h3>
+                </div>
+            </div>
+            <div className={`${popup=="emailAddress"? 'fixed': 'hidden'} flex bg-black100 bg-opacity-25 w-full h-full z-20 items-center justify-center backdrop-blur-sm`}>
+                <div className='flex flex-col mx-80 h-4/5 p-6 bg-white50 rounded-sm gap-8 shadow-lg'>
+                    <h3>The Email already exists</h3>
+                </div>
+            </div>
         </div>
     </div>
   )
