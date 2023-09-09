@@ -44,7 +44,7 @@ const Register = ({isVisible, onClose}) => {
         <div className='main flex flex-col mx-80 h-4/5 p-6 bg-white50 rounded-sm gap-8 shadow-lg'>
             <div className='flex justify-between items-center'>
                 <h3 className='text-primary'> Register </h3>
-                <Fragment onClick={() => onClose()}><Close className='text-3xl rounded-sm hover:scale-105 border bg-red cursor-pointer text-white50'/></Fragment>
+                <div onClick={() => onClose()}><Close className='text-3xl rounded-sm hover:scale-105 border bg-red cursor-pointer text-white50'/></div>
             </div>
             <form className='flex flex-col gap-8 pr-4 overflow-y-scroll'>
                 <div className='flex gap-6'>
@@ -213,14 +213,14 @@ const Register = ({isVisible, onClose}) => {
                     className='w-full flex h-max border text-white50 justify-center border-secondary gap-2 bg-primary py-2 px-4 rounded-full items-center cursor-pointer'
                 /></Link>
             </form>
-            <div className={`${popup=="username"? 'fixed': 'hidden'} flex bg-black100 bg-opacity-25 w-full h-full z-20 items-center justify-center backdrop-blur-sm`}>
-                <div className='flex flex-col mx-80 h-4/5 p-6 bg-white50 rounded-sm gap-8 shadow-lg'>
-                    <h3>The Username already exists</h3>
+            <div className={`${popup=="username"? 'fixed': 'hidden'} absolute flex self-center w-full h-max bottom-0 items-center justify-center`}>
+                <div className='flex text-center w-full flex-col p-3 bg-white50 rounded-sm gap-8 shadow-lg'>
+                    <p className='text-red'>The Username already exists</p>
                 </div>
             </div>
-            <div className={`${popup=="emailAddress"? 'fixed': 'hidden'} flex bg-black100 bg-opacity-25 w-full h-full z-20 items-center justify-center backdrop-blur-sm`}>
-                <div className='flex flex-col mx-80 h-4/5 p-6 bg-white50 rounded-sm gap-8 shadow-lg'>
-                    <h3>The Email already exists</h3>
+            <div className={`${popup=="emailAddress"? 'fixed': 'hidden'} absolute flex self-center w-full h-max bottom-0 items-center justify-center`}>
+                <div className='flex text-center w-full flex-col p-3 bg-white50 rounded-sm gap-8 shadow-lg'>
+                    <p className='text-red'>The Email already exists</p>
                 </div>
             </div>
         </div>
