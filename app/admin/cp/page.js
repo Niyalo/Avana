@@ -15,7 +15,7 @@ const cp = () => {
       <div className='flex flex-col gap-10 overflow-y-scroll overflow-x-auto px-2 pr-4'>
         <div className='flex flex-col gap-2 h-max'>
             <h4 className='text-primary'>Project Title</h4>
-            <input type="text" placeholder='Enter Project Title' className='text-base bg-white50 text-black150 focus:outline-none border-b p-2 w-full'/>
+            <input type="text" placeholder='Enter Project Title' className='formInput'/>
         </div>
         <div className='flex flex-col gap-2 h-max'>
             <h4 className='text-primary'>Project Deadline</h4>
@@ -28,7 +28,7 @@ const cp = () => {
         <h4 className='text-primary text-center'>Project Sections</h4>
         <div className='flex flex-col gap-6'>
           <div className='flex flex-col gap-2 h-max'>
-              <input type="text" placeholder='Section title (Optional)' className='text-base bg-white50 text-black150 focus:outline-none border-b p-2 w-full'/>
+              <input type="text" placeholder='Section title (Optional)' className='formInput'/>
           </div>
           <div className='flex flex-col gap-2 h-max'>
               <h4 className='text-primary'>Upload Section Image</h4>
