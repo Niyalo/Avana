@@ -39,7 +39,7 @@ const profile = () => {
             <Header />
             <div className='flex items-center justify-between'>
                 <div className='flex gap-4 items-center'>
-                    <Image src="../demo.png" width={80} height={80} layout="fixed" className='border-2 h-[80px] object-cover object-top overflow-hidden rounded-full border-secondary'/>
+                    <Image src="/demo.png" width={80} height={80} layout="fixed" className='border-2 h-[80px] object-cover object-top overflow-hidden rounded-full border-secondary'/>
                     <div className='flex flex-col'>
                         <h3 className='text-primary'>Half Guy</h3>
                         <p>Programmer</p>
