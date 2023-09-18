@@ -36,7 +36,7 @@ const Homepage = () => {
         </div>
       </div>
       <Image 
-            src='/avana_logo.svg'
+            src='./avana_logo.svg'
             width={600}
             height={600}
             alt='Avana Logo'
