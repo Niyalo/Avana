@@ -9,6 +9,7 @@ import ProgProfile from "./ProgProfile";
 import Mail from "./Mail";
 import EnrollProgrammers from "./EnrollProgrammers";
 import NewApplications from "./NewApplications";
+import ToC from "./ToC";
 
 export{
     Homepage,
@@ -21,5 +22,6 @@ export{
     ProgProfile,
     Mail,
     EnrollProgrammers,
-    NewApplications
+    NewApplications,
+    ToC
 }

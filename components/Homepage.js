@@ -3,11 +3,12 @@
 import React, { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import homecontent from '@/content/homeContent'
-import {Button, Login, Register} from '@/components'
+import {Button, Login, Register, ToC} from '@/components'
 
 const Homepage = () => {
 
   const [popupReg, setPopupReg] = useState(false);
+  const [popupToC, setPopupToC] = useState(false);
 
   return (
     <div className='relative h-screen w-screen'>
@@ -19,6 +20,7 @@ const Homepage = () => {
             className='absolute inset-0 m-auto -z-10 opacity-30'
           />
       <Register isVisible={popupReg} onClose={() => setPopupReg(false)}/>
+      <ToC isVisible={popupToC} onClose={()=>setPopupToC(false)}/>
       <div className='main h-screen relative py-6 flex flex-col justify-around items-center gap-2'>
           <div className='flex justify-between items-center w-2/5 h-max bg-white50 rounded-sm py-4 px-4'>
             <Image 
@@ -34,7 +36,7 @@ const Homepage = () => {
             </div>
         </div>
         <div className='flex flex-col p-5 w-2/5 bg-white50 rounded-sm shadow-lg gap-6'>
-          <Login />
+          <Login TocPopup={()=>setPopupToC(true)}/>
           <div onClick={() => setPopupReg(true)}><Button type="register" /></div>
         </div>
       </div>

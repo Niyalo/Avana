@@ -5,7 +5,7 @@ import React, { useState } from 'react'
 import Link from 'next/link';
 import Button from './Button';
 
-const Login = () => {
+const Login = ({TocPopup}) => {
 
     const [isChecked, setIsChecked] = useState(false);
 
@@ -66,7 +66,7 @@ const Login = () => {
                 onChange={() => setIsChecked(prevChecked => !prevChecked)}
                 className='mr-3 h-4 w-4'
                 />
-                I accept all Terms and Conditions.
+                I accept all <a onClick={()=>TocPopup()}>Terms and Conditions.</a>
             </label>
             {isChecked? 
                 <Link href="/admin/vp" className='w-full'>
