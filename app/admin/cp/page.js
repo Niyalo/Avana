@@ -39,9 +39,11 @@ const cp = () => {
               <textarea
                   className="h-[200px] rounded-sm p-3 w-full focus:outline-none"
                   placeholder='Add Description of Project'
-                  rows={15}
+                  rows={10}
+                  cols={100}
               />
           </div>
+          <hr className='w-full border-primary border-dashed' />
         </div>
         <div className='text-center mx-5'><Button type="add" label="Add Sections" /></div>
       </div> 
