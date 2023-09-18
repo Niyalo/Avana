@@ -24,7 +24,7 @@ const cp = () => {
               <label className='flex w-full whitespace-nowrap items-center gap-4 text-black150'>End Date: <input type="date" placeholder='End Date' className='text-base bg-white100 text-black150 rounded-sm focus:outline-none p-2 px-4 w-max'/></label>
             </div>
         </div>
-        <div className='flex flex-col gap-2 w-full'><hr className='w-full border-primary' /><hr className='w-full border-primary' /></div>
+        <div className='bg-primary h-2 w-full'></div>
         <h4 className='text-primary text-center'>Project Sections</h4>
         <div className='flex flex-col gap-6'>
           <div className='flex flex-col gap-2 h-max'>
