@@ -7,6 +7,8 @@ import Button from './Button';
 
 const Login = () => {
 
+    const [isChecked, setIsChecked] = useState(false);
+
     const [form, setForm] = useState({
         emailAddress: '',
         password: '',
@@ -22,7 +24,7 @@ const Login = () => {
   return (
     <div className='w-full flex flex-col gap-8'>
         <h3 className='text-primary'> Login </h3>
-        <form className='flex flex-col gap-11'>
+        <form className='flex flex-col gap-8'>
             <div className='w-full'>
                 <label
                     htmlFor="emailAddress"
@@ -57,9 +59,22 @@ const Login = () => {
                     required
                 />
             </div>
-            <Link href="/admin/vp" className='w-full'>
-                <Button type="login" />
-            </Link>
+            <label className='select-none'>
+                <input
+                type="checkbox"
+                checked={isChecked}
+                onChange={() => setIsChecked(prevChecked => !prevChecked)}
+                className='mr-3 h-4 w-4'
+                />
+                I accept all Terms and Conditions.
+            </label>
+            {isChecked? 
+                <Link href="/admin/vp" className='w-full'>
+                    <Button type="login" />
+                </Link>
+            :
+                <Button type="loginDis" />
+            }
         </form>
     </div>
   )
