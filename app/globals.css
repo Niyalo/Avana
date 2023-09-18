@@ -46,7 +46,7 @@
   }
 
   .buttons{
-    @apply flex shadow-md border h-max gap-2 py-3 px-4 rounded-full items-center cursor-pointer hover:scale-105
+    @apply flex justify-center text-center shadow-md border h-max gap-2 py-3 px-4 rounded-full items-center cursor-pointer hover:scale-105
   }
 
   .formLabel{

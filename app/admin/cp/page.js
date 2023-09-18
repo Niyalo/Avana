@@ -43,7 +43,7 @@ const cp = () => {
               />
           </div>
         </div>
-        <Button type="add" label="Add Sections" />
+        <div className='text-center mx-5'><Button type="add" label="Add Sections" /></div>
       </div> 
     </div>
   )
