@@ -40,7 +40,7 @@ const cp = () => {
                   className="h-[200px] rounded-sm p-3 w-full focus:outline-none"
                   placeholder='Add Description of Project'
                   rows={10}
-                  cols={100}
+                  cols={60}
               />
           </div>
           <hr className='w-full border-primary border-dashed' />

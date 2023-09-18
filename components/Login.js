@@ -66,7 +66,7 @@ const Login = ({TocPopup}) => {
                 onChange={() => setIsChecked(prevChecked => !prevChecked)}
                 className='mr-3 h-4 w-4'
                 />
-                I accept all <a onClick={()=>TocPopup()}>Terms and Conditions.</a>
+                I accept all <a className='text-primary cursor-pointer underline' onClick={()=>TocPopup()}>Terms and Conditions.</a>
             </label>
             {isChecked? 
                 <Link href="/admin/vp" className='w-full'>
