@@ -24,9 +24,9 @@ const cp = () => {
               <label className='flex w-full whitespace-nowrap items-center gap-4 text-black150'>End Date: <input type="date" placeholder='End Date' className='text-base bg-white100 text-black150 rounded-sm focus:outline-none p-2 px-4 w-max'/></label>
             </div>
         </div>
-        <hr className='w-full border-primary' />
-        <h4 className='text-primary'>Project Sections:</h4>
-        <div className='flex flex-col gap-4'>
+        <div className='flex flex-col gap-2 w-full'><hr className='w-full border-primary' /><hr className='w-full border-primary' /></div>
+        <h4 className='text-primary text-center'>Project Sections</h4>
+        <div className='flex flex-col gap-6'>
           <div className='flex flex-col gap-2 h-max'>
               <input type="text" placeholder='Section title (Optional)' className='text-base bg-white50 text-black150 focus:outline-none border-b p-2 w-full'/>
           </div>
@@ -40,7 +40,6 @@ const cp = () => {
                   className="h-[200px] rounded-sm p-3 w-full focus:outline-none"
                   placeholder='Add Description of Project'
                   rows={15}
-                  cols={80} 
               />
           </div>
         </div>
