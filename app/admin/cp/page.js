@@ -20,10 +20,11 @@ const cp = () => {
         <div className='flex flex-col gap-2 h-max'>
             <h4 className='text-primary'>Project Deadline</h4>
             <div className='flex gap-8 w-full'>
-              <label className='flex w-full whitespace-nowrap items-center gap-4 text-primary'>Start Date: <input type="date" placeholder='Start Date' className='text-base bg-white100 text-black150 rounded-sm focus:outline-none p-2 px-4 w-max'/></label>
-              <label className='flex w-full whitespace-nowrap items-center gap-4 text-primary'>End Date: <input type="date" placeholder='End Date' className='text-base bg-white100 text-black150 rounded-sm focus:outline-none p-2 px-4 w-max'/></label>
+              <label className='flex w-full whitespace-nowrap items-center gap-4 text-black150'>Start Date: <input type="date" placeholder='Start Date' className='text-base bg-white100 text-black150 rounded-sm focus:outline-none p-2 px-4 w-max'/></label>
+              <label className='flex w-full whitespace-nowrap items-center gap-4 text-black150'>End Date: <input type="date" placeholder='End Date' className='text-base bg-white100 text-black150 rounded-sm focus:outline-none p-2 px-4 w-max'/></label>
             </div>
         </div>
+        <hr className='w-full border-primary' />
         <h4 className='text-primary'>Project Sections:</h4>
         <div className='flex flex-col gap-4'>
           <div className='flex flex-col gap-2 h-max'>
@@ -31,14 +32,14 @@ const cp = () => {
           </div>
           <div className='flex flex-col gap-2 h-max'>
               <h4 className='text-primary'>Upload Section Image</h4>
-              <input type="file" accept="image/*" placeholder='Upload Project Image' className='text-base h-[100px] text-black150 border-none file:w-full file:h-full file:cursor-pointer file:bg-white100  file:m-0 file:mt-1 file:text-black150 file:px-3 file:border-none'/>
+              <input type="file" accept="image/*" placeholder='Upload Project Image' className='text-base h-[80px] text-black150 border-none file:w-full file:h-full file:cursor-pointer file:bg-white100  file:m-0 file:mt-1 file:text-black150 file:px-3 file:border-none'/>
           </div>
-          <div className='flex flex-col gap-2 h-max'>
+          <div className='flex flex-col gap-2 h-max w-max'>
               <h4 className='text-primary'>Section Description</h4>
               <textarea
                   className="h-[200px] rounded-sm p-3 w-full focus:outline-none"
                   placeholder='Add Description of Project'
-                  rows={20}
+                  rows={15}
                   cols={80} 
               />
           </div>
