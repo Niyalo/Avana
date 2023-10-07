@@ -4,8 +4,11 @@ import { Close } from '@mui/icons-material'
 import React, { useState } from 'react'
 import Link from 'next/link';
 import Button from './Button';
+import { useRouter } from 'next/router';
 
 const Login = ({TocPopup}) => {
+
+    const router = useRouter();
 
     const [isChecked, setIsChecked] = useState(false);
 
@@ -21,6 +24,39 @@ const Login = ({TocPopup}) => {
         }))
     }
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+      
+        try {
+          const response = await fetch('http://localhost:8000/registerInfo', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(form),
+          });
+      
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+      
+          // Assuming the API returns a JSON object with a "verified" property
+          const data = await response.json();
+      
+          if (data.verified) {
+            // If the email and password are verified, set "verified" to true
+             router.push(`/${data.username}`);
+          } else {
+            // If verification fails, you can display an error message or take other actions
+            // For example, show an alert
+            window.alert('Email and password do not match.');
+          }
+        } catch (error) {
+          window.alert('Error logging in:', error);
+        }
+      };
+
+          
   return (
     <div className='w-full flex flex-col gap-8'>
         <h3 className='text-primary'> Login </h3>
@@ -69,9 +105,9 @@ const Login = ({TocPopup}) => {
                 I accept all <a className='text-primary cursor-pointer underline' onClick={()=>TocPopup()}>Terms and Conditions.</a>
             </label>
             {isChecked? 
-                <Link href="/admin/vp" className='w-full'>
+                <div className='w-full' onClick={handleSubmit}>
                     <Button type="login" />
-                </Link>
+                </div>
             :
                 <Button type="loginDis" />
             }

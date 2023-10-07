@@ -4,8 +4,37 @@ import React, { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import {Button, Login, Register} from '@/components'
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 const logged = () => {
+
+  const router = useRouter();
+  const { username } = router.query; // Get the username from the URL
+
+  const [loggedInUser, setLoggedInUser] = useState(null);
+
+  // Simulate fetching the logged-in user's data when the component mounts
+  useEffect(() => {
+    // Replace this with your authentication logic to get the logged-in user
+    const fetchLoggedInUser = async () => {
+      try {
+        // Assuming you have a function getCurrentUser() that returns user info
+        const user = await getCurrentUser();
+
+        // Set the logged-in user in state
+        setLoggedInUser(user);
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
+    };
+
+    fetchLoggedInUser();
+  }, []);
+  
+  if (!loggedInUser || loggedInUser.username !== username) {
+    // Redirect or display an access denied message
+    return <p>Access denied</p>;
+  }
 
   const scrollContainer1 = useRef(null);
   const scrollContainer2 = useRef(null); // Create a ref for the scrollable container

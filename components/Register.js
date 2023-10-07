@@ -3,7 +3,6 @@
 import { Close } from '@mui/icons-material'
 import React, { Fragment, useState } from 'react'
 import Link from 'next/link';
-import registerInfo from '@/content/registerInfo';
 
 const Register = ({isVisible, onClose}) => {
 
@@ -37,6 +36,30 @@ const Register = ({isVisible, onClose}) => {
         }
     }
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+    
+        try {
+          const response = await fetch('http://localhost:8000/registerInfo', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(form),
+          });
+    
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+    
+          // You can handle success here, e.g., redirect to a new page
+          window.alert('You have successfully Registered. Check your mail');
+    
+        } catch (error) {
+          window.alert('Error logging in:', error);
+        }
+      };
+
     if(!isVisible) return null;
 
     const handleClose = (e) => {
@@ -50,7 +73,7 @@ const Register = ({isVisible, onClose}) => {
                 <h3 className='text-primary'> Register </h3>
                 <div onClick={() => onClose()}><Close className='text-3xl rounded-sm hover:scale-105 border bg-red cursor-pointer text-white50'/></div>
             </div>
-            <form className='flex flex-col gap-8 pr-4 overflow-y-scroll'>
+            <form className='flex flex-col gap-8 pr-4 overflow-y-scroll' onSubmit={handleSubmit}>
                 <div className='flex gap-6'>
                     <div className='w-full'>
                         <label
@@ -211,11 +234,11 @@ const Register = ({isVisible, onClose}) => {
                         <h4 className='text-primary text-center'>Profile Image</h4>
                     </div>
                 </div>
-                <Link href="/logged"><input
+                <input
                     type='submit'
                     value="Register"
                     className='w-full flex h-max border text-white50 justify-center border-secondary gap-2 bg-primary py-2 px-4 rounded-full items-center cursor-pointer'
-                /></Link>
+                />
             </form>
             <div className={`${popup=="username"? 'fixed': 'hidden'} absolute flex self-center w-full h-max bottom-0 items-center justify-center`}>
                 <div className='flex text-center w-full flex-col p-3 bg-white50 rounded-sm gap-8 shadow-lg'>
