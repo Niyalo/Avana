@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
-import homecontent from '@/content/homeContent'
 import {Button, Login, Register} from '@/components'
 import Link from 'next/link';
 
@@ -47,19 +46,39 @@ const logged = () => {
 
   }, []);
 
-  const programmers = homecontent.programmers.map(items => (
+  const [homecontent, setHomecontent] = useState([]);
+
+  useEffect(() => {
+    // Fetch data from the API here
+    const fetchData = async () => {
+      try {
+        const response = await fetch('localhost:8000/homecontent');
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        setHomecontent(data); // Update state with fetched data
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData(); // Call the fetch function when the component mounts
+  }, []);
+
+  const programmers = homecontent.programmers? homecontent.programmers.map(items => (
     <div className='flex flex-col items-center gap-4'>
       <div className='relative w-24 h-24'><Image src={`./images/home/${items.img}`} fill={true} objectFit='cover' className='border-2 object-top overflow-hidden rounded-full border-secondary object-cover'/></div>
       <p>{items.name}</p>
     </div>
-  ))
+  )): null
     
-  const architects = homecontent.architects.map(items =>(
+  const architects = homecontent.architects? homecontent.architects.map(items =>(
     <div className='flex flex-col items-center gap-4'>
       <div className='relative w-24 h-24'><Image src={`./images/home/${items.img}`} fill={true} objectFit='cover' className='border-2 object-top overflow-hidden rounded-full border-secondary object-cover'/></div>
       <p>{items.name}</p>
     </div>
-  ))
+  )):null
 
   return (
       <div className='main h-screen relative py-2 flex flex-col justify-between gap-5'>
