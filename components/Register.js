@@ -27,15 +27,6 @@ const Register = ({isVisible, onClose}) => {
             ...form,
             [e.target.name] : e.target.value
         }))
-        if (form.username=="halfguy") {
-            setPopup("username")
-        }
-        if(form.emailAddress=="nothalfguy@gmail.com"){
-            setPopup("emailAddress")
-        }
-        if(form.emailAddress=="nothalfguy@gmail.com" && form.username=="halfguy"){
-            setPopup("userAddress")
-        }
     }
 
     const handleSubmit = async (e) => {
@@ -47,9 +38,9 @@ const Register = ({isVisible, onClose}) => {
             headers: {
               'Content-Type': 'application/json',
             },
-            body: JSON.stringify({form}),
+            body: JSON.stringify(form),
           })
-          
+          console.log(JSON.stringify(form))
           if (response.ok) {
             // Successful registration
             window.alert('You have successfully registered. Check your email.');
