@@ -15,8 +15,8 @@ const Register = ({isVisible, onClose}) => {
         lastName: '',
         homeAddress: '',
         emailAddress: '',
-        password:'',
-        confPassword:'',
+        pass:'',
+        confPass:'',
         phone: '',
         username: '',
         gender: ''
@@ -47,9 +47,9 @@ const Register = ({isVisible, onClose}) => {
             headers: {
               'Content-Type': 'application/json',
             },
-            body: JSON.stringify(form),
+            body: JSON.stringify({form}),
           })
-    
+          
           if (response.ok) {
             // Successful registration
             window.alert('You have successfully registered. Check your email.');
@@ -111,7 +111,7 @@ const Register = ({isVisible, onClose}) => {
                         <input
                             type='text'
                             id='lastName'
-                            name='lasName'
+                            name='lastName'
                             onChange={handleChange}
                             placeholder='Enter your Last Name'
                             className='formInput'
@@ -163,7 +163,7 @@ const Register = ({isVisible, onClose}) => {
                     <input
                         type='password'
                         id='password'
-                        name='password'
+                        name='pass'
                         onChange={handleChange}
                         placeholder='Enter your password'
                         className='formInput'
@@ -180,7 +180,7 @@ const Register = ({isVisible, onClose}) => {
                     <input
                         type='password'
                         id='confPassword'
-                        name='confPassword'
+                        name='confPass'
                         onChange={handleChange}
                         placeholder='Confirm your password'
                         className='formInput'
