@@ -45,7 +45,10 @@ const Login = ({TocPopup}) => {
       
           if (data.verified) {
             // If the email and password are verified, set "verified" to true
-             router.push(`/${data.username}`);
+             router.push({
+                pathname: `/${data.username}`,
+                query: { LoginUsername: `${data.username}`},
+             });
           } else {
             // If verification fails, you can display an error message or take other actions
             // For example, show an alert
