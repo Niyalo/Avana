@@ -20,7 +20,7 @@ const Homepage = () => {
           />
       <Register isVisible={popupReg} onClose={() => setPopupReg(false)}/>
       <ToC isVisible={popupToC} onClose={()=>setPopupToC(false)}/>
-      <div className='main h-screen relative py-6 flex flex-col justify-around items-center gap-2'>
+      <div className='main h-screen relative py-6 flex flex-col gap-16 items-center justify-center'>
           <div className='flex justify-between items-center w-2/5 h-max bg-white50 rounded-sm py-4 px-4'>
             <Image 
               src='./avana_logo.svg'

@@ -42,13 +42,13 @@ const Register = ({isVisible, onClose}) => {
         e.preventDefault();
     
         try {
-          const response = await fetch('http://localhost:8000/registerInfo', {
+          const response = await fetch('http://localhost:8000/registerinfo', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
             },
             body: JSON.stringify(form),
-          });
+          })
     
           if (!response.ok) {
             throw new Error('Network response was not ok');
@@ -231,7 +231,7 @@ const Register = ({isVisible, onClose}) => {
                             
                         </div>
                     </div>
-                    <label className="w-full mx-24 mt-8 space-y-4">
+                    <label className="w-full h-max mx-24 mt-8 space-y-4">
                         <input
                         type="file"
                         hidden
@@ -242,7 +242,7 @@ const Register = ({isVisible, onClose}) => {
                                 }
                         }}
                         />
-                        <div className="w-full aspect-video rounded flex items-center justify-center border-2 border-dashed cursor-pointer">
+                        <div className="w-full h-[100px] aspect-video rounded flex items-center justify-center border-2 border-dashed cursor-pointer">
                         {selectedImage ? (
                             <img src={selectedImage} alt="" className='h-[100px] object-cover'/>
                         ) : (
