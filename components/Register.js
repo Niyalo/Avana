@@ -7,6 +7,7 @@ import Link from 'next/link';
 const Register = ({isVisible, onClose}) => {
 
     const [popup, setPopup] = useState("none")
+    const [selectedImage, setSelectedImage] = useState("");
 
     const [form, setForm] = useState({
         firstName: '',
@@ -36,6 +37,14 @@ const Register = ({isVisible, onClose}) => {
         }
     }
 
+    const handleFileChange = (e) => {
+        const file = e.target.files[0]; // Get the first file from the input
+        setForm((prevForm) => ({
+          ...prevForm,
+          profImage: file // Store the file object in the form state
+        }));
+      };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
     
@@ -56,7 +65,7 @@ const Register = ({isVisible, onClose}) => {
           window.alert('You have successfully Registered. Check your mail');
     
         } catch (error) {
-          window.alert('Error logging in:', error);
+          window.alert('Error Registering', error);
         }
       };
 
@@ -229,9 +238,31 @@ const Register = ({isVisible, onClose}) => {
                             
                         </div>
                     </div>
-                    <div className='flex flex-col w-full items-center justify-center gap-2'>
-                        <input type='file' file className='appearance-none rounded-full border-2 border-secondary top-1/2 bg-white100 w-[150px] h-[150px] file:bg-white100 file:w-full file:h-full file:cursor-pointer  file:m-0 file:mt-1 file:text-black150 file:px-3 file:border-none'/>
-                        <h4 className='text-primary text-center'>Profile Image</h4>
+                    <div className="w-full ml-24 mt-8 space-y-4">
+                        <label>
+                            <input
+                            type="file"
+                            hidden
+                            onChange={({ target }) => {
+                                if (target.files) {
+                                const file = target.files[0];
+                                setSelectedImage(URL.createObjectURL(file));
+                                 }
+                            }}
+                            />
+                            <div className="w-40 aspect-video rounded flex items-center justify-center border-2 border-dashed cursor-pointer">
+                            {selectedImage ? (
+                                <img src={selectedImage} alt="" className='h-[100px] object-cover'/>
+                            ) : (
+                                <span>Select Image</span>
+                            )}
+                            </div>
+                        </label>
+                        <button
+                                   className="bg-primary whitespace-nowrap p-3 text-center rounded text-white0"
+                        >
+                            Upload Image
+                        </button>
                     </div>
                 </div>
                 <input
