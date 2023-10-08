@@ -37,14 +37,6 @@ const Register = ({isVisible, onClose}) => {
         }
     }
 
-    const handleFileChange = (e) => {
-        const file = e.target.files[0]; // Get the first file from the input
-        setForm((prevForm) => ({
-          ...prevForm,
-          profImage: file // Store the file object in the form state
-        }));
-      };
-
     const handleSubmit = async (e) => {
         e.preventDefault();
     

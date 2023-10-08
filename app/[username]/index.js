@@ -114,7 +114,7 @@ const logged = () => {
                   </div>
               </div>
               <div className='flex gap-4'>
-                <Link href="/programmers/profile"><Button type="profile" /></Link>
+                <Link href="/[username]/profile"><Button type="profile" /></Link>
                 <Link href="/"><Button type="logout" /></Link>
               </div>
           </div>
