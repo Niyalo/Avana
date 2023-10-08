@@ -3,6 +3,7 @@
 import { Close } from '@mui/icons-material'
 import React, { Fragment, useState } from 'react'
 import Link from 'next/link';
+import Button from './Button';
 
 const Register = ({isVisible, onClose}) => {
 
@@ -230,32 +231,26 @@ const Register = ({isVisible, onClose}) => {
                             
                         </div>
                     </div>
-                    <div className="w-full ml-24 mt-8 space-y-4">
-                        <label>
-                            <input
-                            type="file"
-                            hidden
-                            onChange={({ target }) => {
-                                if (target.files) {
-                                const file = target.files[0];
-                                setSelectedImage(URL.createObjectURL(file));
-                                 }
-                            }}
-                            />
-                            <div className="w-40 aspect-video rounded flex items-center justify-center border-2 border-dashed cursor-pointer">
-                            {selectedImage ? (
-                                <img src={selectedImage} alt="" className='h-[100px] object-cover'/>
-                            ) : (
-                                <span>Select Image</span>
-                            )}
-                            </div>
-                        </label>
-                        <button
-                                   className="bg-primary w-40 whitespace-nowrap p-3 text-center rounded text-white0"
-                        >
-                            Upload Image
-                        </button>
-                    </div>
+                    <label className="w-full mx-24 mt-8 space-y-4">
+                        <input
+                        type="file"
+                        hidden
+                        onChange={({ target }) => {
+                            if (target.files) {
+                            const file = target.files[0];
+                            setSelectedImage(URL.createObjectURL(file));
+                                }
+                        }}
+                        />
+                        <div className="w-full aspect-video rounded flex items-center justify-center border-2 border-dashed cursor-pointer">
+                        {selectedImage ? (
+                            <img src={selectedImage} alt="" className='h-[100px] object-cover'/>
+                        ) : (
+                            <span>Select Image</span>
+                        )}
+                        </div>
+                        <Button type="add" label="Upload Image" />
+                    </label>
                 </div>
                 <input
                     type='submit'
