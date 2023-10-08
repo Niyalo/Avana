@@ -4,7 +4,7 @@ import { Close } from '@mui/icons-material'
 import React, { useState } from 'react'
 import Link from 'next/link';
 import Button from './Button';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 const Login = ({TocPopup}) => {
 
