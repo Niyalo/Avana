@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
-import homecontent from '@/content/homeContent'
 import {Button, Login, Register, ToC} from '@/components'
 
 const Homepage = () => {

@@ -259,7 +259,7 @@ const Register = ({isVisible, onClose}) => {
                             </div>
                         </label>
                         <button
-                                   className="bg-primary whitespace-nowrap p-3 text-center rounded text-white0"
+                                   className="bg-primary w-40 whitespace-nowrap p-3 text-center rounded text-white0"
                         >
                             Upload Image
                         </button>
