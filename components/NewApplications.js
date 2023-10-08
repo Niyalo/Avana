@@ -9,23 +9,23 @@ const NewApplications = ({isVisible, onClose}) => {
 
     const [registerInfo, setRegisterInfo] = useState([]);
 
-  useEffect(() => {
-    // Fetch data from the API here
-    const fetchData = async () => {
-      try {
-        const response = await fetch('localhost:8000/registerinfo/');
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        const data = await response.json();
-        setRegisterInfo(data); // Update state with fetched data
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
+//   useEffect(() => {
+//     // Fetch data from the API here
+//     const fetchData = async () => {
+//       try {
+//         const response = await fetch('localhost:8000/registerinfo/');
+//         if (!response.ok) {
+//           throw new Error('Network response was not ok');
+//         }
+//         const data = await response.json();
+//         setRegisterInfo(data); // Update state with fetched data
+//       } catch (error) {
+//         console.error('Error fetching data:', error);
+//       }
+//     };
 
-    fetchData(); // Call the fetch function when the component mounts
-  }, []);
+//     fetchData(); // Call the fetch function when the component mounts
+//   }, []);
 
     const applicationList = registerInfo? registerInfo.map(items =>(
         <div className='flex gap-10 w-full'>
