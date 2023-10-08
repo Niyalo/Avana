@@ -13,7 +13,7 @@ const NewApplications = ({isVisible, onClose}) => {
     // Fetch data from the API here
     const fetchData = async () => {
       try {
-        const response = await fetch('localhost:8000/registerinfo');
+        const response = await fetch('localhost:8000/registerinfo/');
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }

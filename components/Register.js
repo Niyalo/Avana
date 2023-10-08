@@ -42,7 +42,7 @@ const Register = ({isVisible, onClose}) => {
         e.preventDefault();
     
         try {
-          const response = await fetch('http://localhost:8000/registerinfo', {
+          const response = await fetch('http://localhost:8000/registerinfo/', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -50,15 +50,22 @@ const Register = ({isVisible, onClose}) => {
             body: JSON.stringify(form),
           })
     
-          if (!response.ok) {
-            throw new Error('Network response was not ok');
+          if (response.ok) {
+            // Successful registration
+            window.alert('You have successfully registered. Check your email.');
+          } else {
+            // Handle server-side validation errors or other issues
+            const data = await response.json();
+            if (data && data.error) {
+              window.alert(`Registration failed: ${data.error}`);
+            } else {
+              window.alert('Registration failed. Please try again later.');
+            }
           }
-    
-          // You can handle success here, e.g., redirect to a new page
-          window.alert('You have successfully Registered. Check your mail');
-    
         } catch (error) {
-          window.alert('Error Registering', error);
+          // Handle network-related errors
+          console.error('Error registering:', error);
+          window.alert('Error registering. Please check your internet connection.');
         }
       };
 
