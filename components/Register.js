@@ -9,6 +9,7 @@ const Register = ({isVisible, onClose}) => {
 
     const [popup, setPopup] = useState("none")
     const [selectedImage, setSelectedImage] = useState("");
+    const [passwordMatchError, setPasswordMatchError] = useState(false);
 
     const [form, setForm] = useState({
         firstName: '',
@@ -27,32 +28,57 @@ const Register = ({isVisible, onClose}) => {
             ...form,
             [e.target.name] : e.target.value
         }))
+        if (e.target.name === 'confPass') {
+            setPasswordMatchError(form.pass !== e.target.value);
+          }
     }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        try {
+            const checkResponse = await fetch('localhost:8000/registerinfo', {
+              method: 'GET', // Use GET to retrieve data without modifying it
+            });
+        
+            if (checkResponse.ok) {
+              const existingData = await checkResponse.json();
+              const isUsernameExists = existingData.some(item => item.username === form.username);
+              const isEmailExists = existingData.some(item => item.email === form.email);
+        
+              if (isUsernameExists) {
+                window.alert('Username already exists. Please choose a different one.');
+                return;
+              }
+        
+              if (isEmailExists) {
+                window.alert('Email already exists. Please use a different email.');
+                return;
+              }
+            } else {
+              window.alert('Failed to check existing data. Please try again later.');
+              return;
+            }
+          } catch (error) {
+            window.alert('Error checking data. Please check your internet connection.');
+            return;
+          }
     
         try {
-          const response = await fetch('http://localhost:8000/registerinfo/', {
+          const response = await fetch('localhost:8000/registerinfo', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
             },
             body: JSON.stringify(form),
           })
-          console.log(JSON.stringify(form))
+         
           if (response.ok) {
             // Successful registration
             window.alert('You have successfully registered. Check your email.');
           } else {
-            // Handle server-side validation errors or other issues
-            const data = await response.json();
-            if (data && data.error) {
-              window.alert(`Registration failed: ${data.error}`);
-            } else {
               window.alert('Registration failed. Please try again later.');
             }
-          }
         } catch (error) {
           // Handle network-related errors
           console.error('Error registering:', error);
@@ -177,6 +203,9 @@ const Register = ({isVisible, onClose}) => {
                         className='formInput'
                         required
                     />
+                    {passwordMatchError && (
+                        <p className="text-sm text-red">Passwords do not match.</p>
+                    )}
                 </div>
                 <div className='flex gap-6'>
                     <div className='flex w-full flex-col gap-8'>
@@ -256,21 +285,6 @@ const Register = ({isVisible, onClose}) => {
                     className='w-full flex h-max border text-white50 justify-center border-secondary gap-2 bg-primary py-2 px-4 rounded-full items-center cursor-pointer'
                 />
             </form>
-            <div className={`${popup=="username"? 'fixed': 'hidden'} absolute flex self-center w-full h-max bottom-0 items-center justify-center`}>
-                <div className='flex text-center w-full flex-col p-3 bg-white50 rounded-sm gap-8 shadow-lg'>
-                    <p className='text-red'>The Username already exists</p>
-                </div>
-            </div>
-            <div className={`${popup=="emailAddress"? 'fixed': 'hidden'} absolute flex self-center w-full h-max bottom-0 items-center justify-center`}>
-                <div className='flex text-center w-full flex-col p-3 bg-white50 rounded-sm gap-8 shadow-lg'>
-                    <p className='text-red'>The Email already exists</p>
-                </div>
-            </div>
-            <div className={`${popup=="userAddress"? 'fixed': 'hidden'} absolute flex self-center w-full h-max bottom-0 items-center justify-center`}>
-                <div className='flex text-center w-full flex-col p-3 bg-white50 rounded-sm gap-8 shadow-lg'>
-                    <p className='text-red'>The Email and Username already exists</p>
-                </div>
-            </div>
         </div>
     </div>
   )

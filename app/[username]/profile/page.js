@@ -7,6 +7,28 @@ import { LocationCity, Mail, Phone } from '@mui/icons-material';
 
 const profile = () => {
 
+    const [userData, setUserData] = useState(null);
+
+  useEffect(() => {
+    if (username) {
+      // Fetch user data for the specific username from your API
+      fetch(`localhost:8000/profile/${username}`)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error('Failed to fetch user data');
+          }
+          return response.json();
+        })
+        .then((data) => {
+          // Set the user data in the state
+          setUserData(data);
+        })
+        .catch((error) => {
+          console.error('Error fetching user data:', error);
+        });
+    }
+  }, [username]);
+
     const [projects, setProjects] = useState([]);
 
   useEffect(() => {
@@ -60,14 +82,14 @@ const profile = () => {
                 <div className='flex gap-4 items-center'>
                     <Image src="../demo.png" width={80} height={80} layout="fixed" className='border-2 h-[80px] object-cover object-top overflow-hidden rounded-full border-secondary'/>
                     <div className='flex flex-col'>
-                        <h3 className='text-primary'>Half Guy</h3>
-                        <p>Programmer</p>
+                        <h3 className='text-primary'>{userData.username}</h3>
+                        <p>{userData.title}</p>
                     </div>
                 </div>
                 <div className='flex flex-col gap-2'>
-                   <div className='flex gap-4'><Mail className='text-xl text-primary'/><p> halfguy@gmail.com</p></div>
-                   <div className='flex gap-4'><LocationCity className='text-xl text-primary' /><p> Gongabu, Ktm</p></div>
-                   <div className='flex gap-4'><Phone className='text-xl text-primary' /><p> +977 00000000</p></div>
+                   <div className='flex gap-4'><Mail className='text-xl text-primary'/><p> {userData.email}</p></div>
+                   <div className='flex gap-4'><LocationCity className='text-xl text-primary' /><p> {userData.homeAddress}</p></div>
+                   <div className='flex gap-4'><Phone className='text-xl text-primary' /><p> {userData.phone}</p></div>
                 </div>
             </div>
             <div className='flex h-[400px] gap-6 w-full'>

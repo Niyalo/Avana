@@ -28,7 +28,7 @@ const Login = ({TocPopup}) => {
         e.preventDefault();
       
         try {
-          const response = await fetch('http://localhost:8000/registerInfo', {
+          const response = await fetch('localhost:8000/registerinfo', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -37,27 +37,37 @@ const Login = ({TocPopup}) => {
           });
       
           if (!response.ok) {
-            throw new Error('Network response was not ok');
+            // Handle the case where the email or password doesn't match
+            const errorData = await response.json();
+            if (errorData.error === 'Email doesn\'t match') {
+              window.alert('Email doesn\'t match. Please check your email address.');
+            } else if (errorData.error === 'Password doesn\'t match') {
+              window.alert('Password doesn\'t match. Please check your password.');
+            } else {
+              window.alert('Error logging in. Please try again later.');
+            }
+            return;
           }
       
-          // Assuming the API returns a JSON object with a "verified" property
+          // Assuming the API returns a JSON object with a "username" property
           const data = await response.json();
-      
-          if (data.verified) {
-            // If the email and password are verified, set "verified" to true
-             router.push({
+
+          if (data.isAdmin) {
+            router.push({
+                pathname: `/admin`,
+                query: { LoginUsername: `${data.username}` },
+              })
+          }else{
+            router.push({
                 pathname: `/${data.username}`,
-                query: { LoginUsername: `${data.username}`},
-             });
-          } else {
-            // If verification fails, you can display an error message or take other actions
-            // For example, show an alert
-            window.alert('Email and password do not match.');
+                query: { LoginUsername: `${data.username}` },
+            })
           }
         } catch (error) {
           window.alert('Error logging in:', error);
         }
       };
+      
 
           
   return (
