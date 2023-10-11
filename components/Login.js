@@ -28,7 +28,7 @@ const Login = ({TocPopup}) => {
         e.preventDefault();
       
         try {
-          const response = await fetch('http://127.0.0.1:8000/registerinfo/', {
+          const response = await fetch('http://127.0.0.1:8000/login/', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -43,7 +43,7 @@ const Login = ({TocPopup}) => {
             throw(data)
           }
         }catch (error) {
-          window.alert(error);
+          window.alert(error == "error"? "Invalid Credentials" : "You cant login ahahhahaa");
         }
     }
       
