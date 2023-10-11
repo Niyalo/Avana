@@ -16,11 +16,12 @@ const Register = ({isVisible, onClose}) => {
         lastName: '',
         homeAddress: '',
         emailAddress: '',
-        pass:'',
-        confPass:'',
+        password:'',
+        confPassword:'',
         phone: '',
         username: '',
-        gender: ''
+        gender: '',
+        verified: false
     })
 
     const handleChange = (e) =>{
@@ -28,13 +29,17 @@ const Register = ({isVisible, onClose}) => {
             ...form,
             [e.target.name] : e.target.value
         }))
-        if (e.target.name === 'confPass') {
-            setPasswordMatchError(form.pass !== e.target.value);
+        if (e.target.name === 'password') {
+            setPasswordMatchError(form.password !== e.target.value);
           }
     }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        const formData = { ...form }
+        delete formData.confPassword;
+
 
         // try {
         //     const checkResponse = await fetch('localhost:8000/registerinfo', {
@@ -70,7 +75,7 @@ const Register = ({isVisible, onClose}) => {
             headers: {
               'Content-Type': 'application/json',
             },
-            body: JSON.stringify(form),
+            body: JSON.stringify(formData),
           })
          
           if (response.ok) {
@@ -180,7 +185,7 @@ const Register = ({isVisible, onClose}) => {
                     <input
                         type='password'
                         id='password'
-                        name='pass'
+                        name='password'
                         onChange={handleChange}
                         placeholder='Enter your password'
                         className='formInput'
@@ -197,7 +202,7 @@ const Register = ({isVisible, onClose}) => {
                     <input
                         type='password'
                         id='confPassword'
-                        name='confPass'
+                        name='confPassword'
                         onChange={handleChange}
                         placeholder='Confirm your password'
                         className='formInput'
@@ -251,9 +256,9 @@ const Register = ({isVisible, onClose}) => {
                             </label>
                             
                             <div className='flex w-full justify-between'>
-                                <label><input id='gender' type="radio" name="gender" value="male" onChange={handleChange} className='m-0' required/> Male</label>
-                                <label><input id='gender' type="radio" name="gender" value="female" onChange={handleChange} className='m-0' required/> Female</label>
-                                <label><input id='gender' type="radio" name="gender" value="other" onChange={handleChange} className='m-0' required/> Other</label>
+                                <label><input id='gender' type="radio" name="gender" value="M" onChange={handleChange} className='m-0' required/> Male</label>
+                                <label><input id='gender' type="radio" name="gender" value="F" onChange={handleChange} className='m-0' required/> Female</label>
+                                <label><input id='gender' type="radio" name="gender" value="O" onChange={handleChange} className='m-0' required/> Other</label>
                             </div>
                             
                         </div>

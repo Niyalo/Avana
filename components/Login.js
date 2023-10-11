@@ -24,50 +24,50 @@ const Login = ({TocPopup}) => {
         }))
     }
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
+    // const handleSubmit = async (e) => {
+    //     e.preventDefault();
       
-        try {
-          const response = await fetch('localhost:8000/registerinfo', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(form),
-          });
+    //     try {
+    //       const response = await fetch('localhost:8000/registerinfo', {
+    //         method: 'POST',
+    //         headers: {
+    //           'Content-Type': 'application/json',
+    //         },
+    //         body: JSON.stringify(form),
+    //       });
       
-          if (!response.ok) {
-            // Handle the case where the email or password doesn't match
-            const errorData = await response.json();
-            if (errorData.error === 'Email doesn\'t match') {
-              window.alert('Email doesn\'t match. Please check your email address.');
-            } else if (errorData.error === 'Password doesn\'t match') {
-              window.alert('Password doesn\'t match. Please check your password.');
-            } else {
-              window.alert('Error logging in. Please try again later.');
-            }
-            return;
-          }
+    //       if (!response.ok) {
+    //         // Handle the case where the email or password doesn't match
+    //         const errorData = await response.json();
+    //         if (errorData.error === 'Email doesn\'t match') {
+    //           window.alert('Email doesn\'t match. Please check your email address.');
+    //         } else if (errorData.error === 'Password doesn\'t match') {
+    //           window.alert('Password doesn\'t match. Please check your password.');
+    //         } else {
+    //           window.alert('Error logging in. Please try again later.');
+    //         }
+    //         return;
+    //       }
       
-          // Assuming the API returns a JSON object with a "username" property
-          const data = await response.json();
-          localStorage.setItem('isAdmin', data.isAdmin);
-          localStorage.setItem('verified', data.verified);
-          if (data.isAdmin) {
-            router.push({
-                pathname: `/admin`,
-                query: { LoginUsername: `${data.username}` },
-              })
-          }else{
-            router.push({
-                pathname: `/${data.username}`,
-                query: { LoginUsername: `${data.username}` },
-            })
-          }
-        } catch (error) {
-          window.alert('Error logging in:', error);
-        }
-      };
+    //       // Assuming the API returns a JSON object with a "username" property
+    //       const data = await response.json();
+    //       localStorage.setItem('isAdmin', data.isAdmin);
+    //       localStorage.setItem('verified', data.verified);
+    //       if (data.isAdmin) {
+    //         router.push({
+    //             pathname: `/admin`,
+    //             query: { LoginUsername: `${data.username}` },
+    //           })
+    //       }else{
+    //         router.push({
+    //             pathname: `/${data.username}`,
+    //             query: { LoginUsername: `${data.username}` },
+    //         })
+    //       }
+    //     } catch (error) {
+    //       window.alert('Error logging in:', error);
+    //     }
+    //   };
       
 
           
