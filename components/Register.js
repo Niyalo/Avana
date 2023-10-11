@@ -71,7 +71,7 @@ const Register = ({isVisible, onClose}) => {
         //   }
     
         try {
-          const response = await fetch('https://retoolapi.dev/Jy1Rh1/data', {
+          const response = await fetch(`http://127.0.0.1:8000/registerinfo/`', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
