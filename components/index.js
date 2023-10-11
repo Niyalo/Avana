@@ -10,6 +10,7 @@ import Mail from "./Mail";
 import EnrollProgrammers from "./EnrollProgrammers";
 import NewApplications from "./NewApplications";
 import ToC from "./ToC";
+import withAuth from "./withAuth";
 
 export{
     Homepage,
@@ -23,5 +24,6 @@ export{
     Mail,
     EnrollProgrammers,
     NewApplications,
-    ToC
+    ToC,
+    withAuth
 }

@@ -51,7 +51,8 @@ const Login = ({TocPopup}) => {
       
           // Assuming the API returns a JSON object with a "username" property
           const data = await response.json();
-
+          localStorage.setItem('isAdmin', data.isAdmin);
+          localStorage.setItem('verified', data.verified);
           if (data.isAdmin) {
             router.push({
                 pathname: `/admin`,

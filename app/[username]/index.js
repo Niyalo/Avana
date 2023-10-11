@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
-import {Button, Login, Register} from '@/components'
+import {Button, Login, Register, withAuth} from '@/components'
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
@@ -136,4 +136,4 @@ const logged = () => {
   )
 }
 
-export default logged
+export default withAuth(logged)

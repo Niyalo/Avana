@@ -36,36 +36,36 @@ const Register = ({isVisible, onClose}) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        try {
-            const checkResponse = await fetch('localhost:8000/registerinfo', {
-              method: 'GET', // Use GET to retrieve data without modifying it
-            });
+        // try {
+        //     const checkResponse = await fetch('localhost:8000/registerinfo', {
+        //       method: 'GET', // Use GET to retrieve data without modifying it
+        //     });
         
-            if (checkResponse.ok) {
-              const existingData = await checkResponse.json();
-              const isUsernameExists = existingData.some(item => item.username === form.username);
-              const isEmailExists = existingData.some(item => item.email === form.email);
+        //     if (checkResponse.ok) {
+        //       const existingData = await checkResponse.json();
+        //       const isUsernameExists = existingData.some(item => item.username === form.username);
+        //       const isEmailExists = existingData.some(item => item.email === form.email);
         
-              if (isUsernameExists) {
-                window.alert('Username already exists. Please choose a different one.');
-                return;
-              }
+        //       if (isUsernameExists) {
+        //         window.alert('Username already exists. Please choose a different one.');
+        //         return;
+        //       }
         
-              if (isEmailExists) {
-                window.alert('Email already exists. Please use a different email.');
-                return;
-              }
-            } else {
-              window.alert('Failed to check existing data. Please try again later.');
-              return;
-            }
-          } catch (error) {
-            window.alert('Error checking data. Please check your internet connection.');
-            return;
-          }
+        //       if (isEmailExists) {
+        //         window.alert('Email already exists. Please use a different email.');
+        //         return;
+        //       }
+        //     } else {
+        //       window.alert('Failed to check existing data. Please try again later.');
+        //       return;
+        //     }
+        //   } catch (error) {
+        //     window.alert('Error checking data. Please check your internet connection.');
+        //     return;
+        //   }
     
         try {
-          const response = await fetch('localhost:8000/registerinfo', {
+          const response = await fetch('https://retoolapi.dev/Jy1Rh1/data', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
