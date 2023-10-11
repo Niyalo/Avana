@@ -10,6 +10,7 @@ const Register = ({isVisible, onClose}) => {
     const [popup, setPopup] = useState("none")
     const [selectedImage, setSelectedImage] = useState("");
     const [passwordMatchError, setPasswordMatchError] = useState(false);
+    const [disable, setDisable] = useState(false)
 
     const [form, setForm] = useState({
         firstName: '',
@@ -29,7 +30,7 @@ const Register = ({isVisible, onClose}) => {
             ...form,
             [e.target.name] : e.target.value
         }))
-        if (e.target.name === 'password') {
+        if (e.target.name === 'confPassword') {
             setPasswordMatchError(form.password !== e.target.value);
           }
     }
@@ -80,6 +81,7 @@ const Register = ({isVisible, onClose}) => {
          
           if (response.ok) {
             // Successful registration
+            setDisable(true)
             window.alert('You have successfully registered. Check your email.');
           } else {
               window.alert('Registration failed. Please try again later.');
@@ -104,7 +106,7 @@ const Register = ({isVisible, onClose}) => {
                 <h3 className='text-primary'> Register </h3>
                 <div onClick={() => onClose()}><Close className='text-3xl rounded-sm hover:scale-105 border bg-red cursor-pointer text-white50'/></div>
             </div>
-            <form className='flex flex-col gap-8 pr-4 overflow-y-scroll' onSubmit={handleSubmit}>
+            <form className='flex flex-col gap-8 pr-4 overflow-y-scroll' onSubmit={disable? null : handleSubmit}>
                 <div className='flex gap-6'>
                     <div className='w-full'>
                         <label
@@ -286,8 +288,8 @@ const Register = ({isVisible, onClose}) => {
                 </div>
                 <input
                     type='submit'
-                    value="Register"
-                    className='w-full flex h-max border text-white50 justify-center border-secondary gap-2 bg-primary py-2 px-4 rounded-full items-center cursor-pointer'
+                    value={`${disable? `Uploading Data`: 'Register'}`}
+                    className={`w-full flex h-max border text-white50 justify-center border-secondary gap-2 ${disable? `bg-grey100` : `bg-primary`} py-2 px-4 rounded-full items-center cursor-pointer`}
                 />
             </form>
         </div>
