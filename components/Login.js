@@ -13,7 +13,7 @@ const Login = ({TocPopup}) => {
     const [isChecked, setIsChecked] = useState(false);
 
     const [form, setForm] = useState({
-        emailAddress: '',
+        username: '',
         password: '',
     })
 
@@ -28,46 +28,24 @@ const Login = ({TocPopup}) => {
         e.preventDefault();
       
         try {
-          const response = await fetch('localhost:8000/registerinfo', {
+          const response = await fetch('http://127.0.0.1:8000/registerinfo/', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
             },
             body: JSON.stringify(form),
           });
-      
-          if (!response.ok) {
-            // Handle the case where the email or password doesn't match
-            const errorData = await response.json();
-            if (errorData.error === 'Email doesn\'t match') {
-              window.alert('Email doesn\'t match. Please check your email address.');
-            } else if (errorData.error === 'Password doesn\'t match') {
-              window.alert('Password doesn\'t match. Please check your password.');
-            } else {
-              window.alert('Error logging in. Please try again later.');
-            }
-            return;
-          }
-      
-          // Assuming the API returns a JSON object with a "username" property
+          
           const data = await response.json();
-          localStorage.setItem('isAdmin', data.isAdmin);
-          localStorage.setItem('verified', data.verified);
-          if (data.isAdmin) {
-            router.push({
-                pathname: `/admin`,
-                query: { LoginUsername: `${data.username}` },
-              })
-          }else{
-            router.push({
-                pathname: `/${data.username}`,
-                query: { LoginUsername: `${data.username}` },
-            })
+          if(response.ok){
+            router.push(`/${data.username}`)
+         }else {
+            throw(data)
           }
-        } catch (error) {
-          window.alert('Error logging in:', error);
+        }catch (error) {
+          window.alert(error);
         }
-      };
+    }
       
 
           
@@ -77,17 +55,17 @@ const Login = ({TocPopup}) => {
         <form className='flex flex-col gap-8'>
             <div className='w-full'>
                 <label
-                    htmlFor="emailAddress"
+                    htmlFor="username"
                     className='formLabel'
                 >
-                    Email Address*
+                    Username*
                 </label>
                 <input
                     type='email'
-                    id='emailAddress'
-                    name='emailAddress'
+                    id='username'
+                    name='username'
                     onChange={handleChange}
-                    placeholder='Enter your Email Address'
+                    placeholder='Enter your Username'
                     className='formInput'
                     required
                 />

@@ -36,6 +36,7 @@ const Register = ({isVisible, onClose}) => {
     }
 
     const handleSubmit = async (e) => {
+        setDisable(true)
         e.preventDefault();
 
         const formData = { ...form }
@@ -71,7 +72,7 @@ const Register = ({isVisible, onClose}) => {
         //   }
     
         try {
-          const response = await fetch(`http://127.0.0.1:8000/registerinfo/`', {
+          const response = await fetch('http://127.0.0.1:8000/registerinfo/', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -81,12 +82,13 @@ const Register = ({isVisible, onClose}) => {
          
           if (response.ok) {
             // Successful registration
-            setDisable(true)
             window.alert('You have successfully registered. Check your email.');
+            () => onClose()
           } else {
               window.alert('Registration failed. Please try again later.');
             }
         } catch (error) {
+            setDisable(false)
           // Handle network-related errors
           console.error('Error registering:', error);
           window.alert('Error registering. Please check your internet connection.');
