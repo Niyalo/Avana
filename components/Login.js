@@ -36,14 +36,14 @@ const Login = ({TocPopup}) => {
             body: JSON.stringify(form),
           });
           
-          const data = await response.json();
+          const errorData = await response.json();
           if(response.ok){
-            router.push(`/${data.username}`)
+            router.push(`/${form.username}`)
          }else {
-            throw(data)
+            throw(errorData)
           }
-        }catch (error) {
-          window.alert(error == "error"? "Invalid Credentials" : "You cant login ahahhahaa");
+        }catch (errorData) {
+          window.alert("Invalid Credentials");
         }
     }
       

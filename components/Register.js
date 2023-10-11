@@ -285,7 +285,7 @@ const Register = ({isVisible, onClose}) => {
                             <span>Select Image</span>
                         )}
                         </div>
-                        <Button type="add" label="Upload Image" />
+                        <Button type={`${selectedImage ==""? `add`:`text`}`} label={`${selectedImage ==""? `Upload Image`:`Uploaded`}`}/>
                     </label>
                 </div>
                 <input
