@@ -43,6 +43,10 @@ const Login = ({TocPopup}) => {
           if(response.ok){
             setErrorMsg(false)
             router.push(`/${form.username}`)
+         }
+         if(response.status === 302){
+            setErrorMsg(false)
+            router.push(`/useradmin/${form.username}/na`)
          }else {
             throw(errorData)
           }

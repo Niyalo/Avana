@@ -29,9 +29,7 @@ const profile = () => {
       })
      
       if (response.ok) {
-        // Successful registration
         window.alert('Succesfully Requested Enrollment');
-        () => onClose()
       } else {
           window.alert('Enrollment Request Failed');
         }
