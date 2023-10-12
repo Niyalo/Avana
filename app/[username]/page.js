@@ -56,7 +56,7 @@ const logged = () => {
     // Fetch data from the API here
     const fetchData = async () => {
       try {
-        const response = await fetch('localhost:8000');
+        const response = await fetch('http://127.0.0.1:8000');
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -70,18 +70,14 @@ const logged = () => {
     fetchData(); // Call the fetch function when the component mounts
   }, []);
 
-  const programmers = profile? profile
-  .filter((items) => items.title === "Programmer")
-  .map(items => (
+  const programmers = profile? profile.programmers.map(items => (
     <div className='flex flex-col items-center gap-4'>
       <div className='relative w-24 h-24'><Image src={`http://35.232.216.253/uploads/original/f8/88/6bee943c18b8ba921f7eed571af2.jpg`} fill={true} objectFit='cover' className='border-2 object-top overflow-hidden rounded-full border-secondary object-cover'/></div>
       <p>{items.name}</p>
     </div>
   )): null
     
-  const architects = profile? profile
-  .filter((items) => items.title === "Architect")
-  .map(items =>(
+  const architects = profile? profile.architects.map(items =>(
     <div className='flex flex-col items-center gap-4'>
       <div className='relative w-24 h-24'><Image src={`http://35.232.216.253/uploads/original/f8/88/6bee943c18b8ba921f7eed571af2.jpg`} fill={true} objectFit='cover' className='border-2 object-top overflow-hidden rounded-full border-secondary object-cover'/></div>
       <p>{items.name}</p>
