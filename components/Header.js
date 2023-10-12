@@ -4,7 +4,7 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import { Button } from '@/components'
 import Link from 'next/link';
 
-const Header = () => {
+const Header = (props) => {
   return (
     <div className='flex justify-between items-center'>
         <Image 
@@ -14,7 +14,7 @@ const Header = () => {
           alt='Avana Logo'
         />
         <div className='flex gap-6 items-center'>
-            <p>Half Guy</p>
+            <p>{props.username}</p>
             <Link href="/"><Button type="logout" /></Link>
         </div>
     </div>

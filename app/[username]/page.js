@@ -9,6 +9,7 @@ import { usePathname } from 'next/navigation';
 
 const logged = () => {
   const pathname = usePathname();
+  const username = pathname.split('/')[1];
 
   const scrollContainer1 = useRef(null);
   const scrollContainer2 = useRef(null); // Create a ref for the scrollable container
@@ -101,7 +102,7 @@ const logged = () => {
               <div className='flex gap-4 items-center'>
                   <Image src="http://35.232.216.253/uploads/original/f8/88/6bee943c18b8ba921f7eed571af2.jpg" width={40} height={40} layout="fixed" className='border-2 h-[40px] object-cover object-top overflow-hidden rounded-full border-secondary'/>
                   <div className='flex flex-col'>
-                      <h4 className='text-primary'>Half Guy</h4>
+                      <h4 className='text-primary capitalize font-bold'>{username}</h4>
                       <p>Architect</p>
                   </div>
               </div>

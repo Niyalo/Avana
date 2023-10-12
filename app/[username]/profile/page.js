@@ -4,10 +4,15 @@ import { Header, Topbar, Button } from '@/components'
 import React,{useState, useEffect} from 'react'
 import Image from 'next/image'
 import { LocationCity, Mail, Phone } from '@mui/icons-material';
+import { usePathname } from 'next/navigation';
+
 
 const profile = () => {
-
-    const [userData, setUserData] = useState(null);
+  const pathname = usePathname()
+ 
+  const username = pathname.split('/')[1];
+  
+  const [userData, setUserData] = useState(null);
 
   useEffect(() => {
     if (username) {
@@ -20,7 +25,6 @@ const profile = () => {
           return response.json();
         })
         .then((data) => {
-          // Set the user data in the state
           setUserData(data);
         })
         .catch((error) => {
@@ -77,19 +81,19 @@ const profile = () => {
 
     return (
         <div className='main flex flex-col py-4 gap-10'>
-            <Header />
+            <Header username={username}/>
             <div className='flex items-center justify-between'>
                 <div className='flex gap-4 items-center'>
-                    <Image src="../demo.png" width={80} height={80} layout="fixed" className='border-2 h-[80px] object-cover object-top overflow-hidden rounded-full border-secondary'/>
+                    <Image src="http://35.232.216.253/uploads/original/f8/88/6bee943c18b8ba921f7eed571af2.jpg" width={80} height={80} layout="fixed" className='border-2 h-[80px] object-cover object-top overflow-hidden rounded-full border-secondary'/>
                     <div className='flex flex-col'>
-                        <h3 className='text-primary'>{userData.username}</h3>
-                        <p>{userData.title}</p>
+                        <h3 className='text-primary'>{username}</h3>
+                        <p>Sup</p>
                     </div>
                 </div>
                 <div className='flex flex-col gap-2'>
-                   <div className='flex gap-4'><Mail className='text-xl text-primary'/><p> {userData.email}</p></div>
-                   <div className='flex gap-4'><LocationCity className='text-xl text-primary' /><p> {userData.homeAddress}</p></div>
-                   <div className='flex gap-4'><Phone className='text-xl text-primary' /><p> {userData.phone}</p></div>
+                   <div className='flex gap-4'><Mail className='text-xl text-primary'/><p> Email</p></div>
+                   <div className='flex gap-4'><LocationCity className='text-xl text-primary' /><p> HomeAddress</p></div>
+                   <div className='flex gap-4'><Phone className='text-xl text-primary' /><p>Phone</p></div>
                 </div>
             </div>
             <div className='flex h-[400px] gap-6 w-full'>

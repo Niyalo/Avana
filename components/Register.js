@@ -4,6 +4,7 @@ import { Close } from '@mui/icons-material'
 import React, { Fragment, useState } from 'react'
 import Link from 'next/link';
 import Button from './Button';
+import axios from 'axios';
 
 const Register = ({isVisible, onClose}) => {
 
@@ -44,7 +45,20 @@ const Register = ({isVisible, onClose}) => {
         const formData = { ...form }
         delete formData.confPassword;
 
-
+        async function uploadImage(file) {
+            const formData = new FormData();
+            formData.append('img', file);
+        
+            const response = await axios.post('/api/upload_image', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                    'X-Session-ID': '42fe4871f35ae4e74511a3cdc1d1c48f4a007e5da4d49c02'
+                }
+            });
+        
+            return response.data;
+        }
+   
         // try {
         //     const checkResponse = await fetch('localhost:8000/registerinfo', {
         //       method: 'GET', // Use GET to retrieve data without modifying it
