@@ -11,6 +11,35 @@ const profile = () => {
   const pathname = usePathname()
   const username = pathname.split('/')[1];
   const [userData, setUserData] = useState([]);
+
+  
+  const handleRequest = async (project_name) => {
+
+    const formData = new FormData();
+    formData.append('project_name', project_name);
+    formData.append('username', username);
+
+    try {
+      const response = await fetch('http://127.0.0.1:8000/request_enroll/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+     
+      if (response.ok) {
+        // Successful registration
+        window.alert('Succesfully Requested Enrollment');
+        () => onClose()
+      } else {
+          window.alert('Enrollment Request Failed');
+        }
+    } catch (error) {
+      console.error('Error requesting:', error);
+
+    }
+  };
   
   useEffect(() => {
     const fetchData = async () => {
@@ -35,7 +64,7 @@ const profile = () => {
         <div className="grow shrink basis-0 justify-between items-center flex">
             <div className="flex-col justify-start items-start gap-1 inline-flex">
                 <p>{items.project_name}</p>
-                <p className='text-sm overflow-hidden'>{items.project-description}</p>
+                <p className='text-sm overflow-hidden'>{items.project_description}</p>
             </div>
             <Button label="Learn more" type= "text" />
         </div>
@@ -50,7 +79,7 @@ const profile = () => {
                 <p>{items.project_name}</p>
                 <p className='text-sm overflow-hidden'>{items.project_description}</p>
             </div>
-            <Button label="Request Enrollment" type= "add" className='text-sm'/>
+            <div onClick={() => handleRequest(items.project_name)}><Button label="Request Enrollment" type= "add" className='text-sm'/></div>
         </div>
         </div>
     )):null
