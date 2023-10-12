@@ -4,13 +4,11 @@ import React, { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import {Button, Login, Register, withAuth} from '@/components'
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 
-const router = useRouter()
-  const { userName } = router.query
 
 const logged = () => {
-
+  const pathname = usePathname();
 
   const scrollContainer1 = useRef(null);
   const scrollContainer2 = useRef(null); // Create a ref for the scrollable container
@@ -108,7 +106,7 @@ const logged = () => {
                   </div>
               </div>
               <div className='flex gap-4'>
-                <Link href={`/${userName}/profile`}><Button type="profile" /></Link>
+                <Link href={`${pathname}/profile`}><Button type="profile" /></Link>
                 <Link href="/"><Button type="logout" /></Link>
               </div>
           </div>

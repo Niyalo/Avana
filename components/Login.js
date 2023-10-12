@@ -1,6 +1,6 @@
 "use client";
 
-import { Close } from '@mui/icons-material'
+import { Close, Password, Visibility, VisibilityOff } from '@mui/icons-material'
 import React, { useState } from 'react'
 import Link from 'next/link';
 import Button from './Button';
@@ -10,7 +10,9 @@ const Login = ({TocPopup}) => {
 
     const router = useRouter();
 
-    const [isChecked, setIsChecked] = useState(false);
+    const [isChecked, setIsChecked] = useState(false)
+    const [errorMsg, setErrorMsg] = useState(false)
+    const [loading,setLoading] = useState(false)
 
     const [form, setForm] = useState({
         username: '',
@@ -25,10 +27,11 @@ const Login = ({TocPopup}) => {
     }
 
     const handleSubmit = async (e) => {
+        setLoading(true)
         e.preventDefault();
-      
+              
         try {
-          const response = await fetch('http://127.0.0.1:8000/login/', {
+          const response = await fetch('https://retoolapi.dev/2HluCH/data', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -38,12 +41,15 @@ const Login = ({TocPopup}) => {
           
           const errorData = await response.json();
           if(response.ok){
+            setErrorMsg(false)
             router.push(`/${form.username}`)
          }else {
             throw(errorData)
           }
         }catch (errorData) {
-          window.alert("Invalid Credentials");
+            setLoading(false)
+          setErrorMsg(true)
+          console.log("Invalid Credentials")
         }
     }
       
@@ -51,7 +57,10 @@ const Login = ({TocPopup}) => {
           
   return (
     <div className='w-full flex flex-col gap-8'>
-        <h3 className='text-primary'> Login </h3>
+        <div className='flex justify-between items-center'>
+            <h3 className='text-primary'> Login </h3>
+            {errorMsg && <p className='text-red text-base italic'>*Invalid Credentials. Try again*</p>}
+        </div>
         <form className='flex flex-col gap-8'>
             <div className='w-full'>
                 <label
@@ -61,7 +70,7 @@ const Login = ({TocPopup}) => {
                     Username*
                 </label>
                 <input
-                    type='email'
+                    type='text'
                     id='username'
                     name='username'
                     onChange={handleChange}
@@ -70,7 +79,7 @@ const Login = ({TocPopup}) => {
                     required
                 />
             </div>
-            <div className='w-full'>
+            <div className='w-full relative'>
                 <label
                     htmlFor="password"
                     className='formLabel'
@@ -96,8 +105,8 @@ const Login = ({TocPopup}) => {
                 />
                 I accept all <a className='text-primary cursor-pointer underline' onClick={()=>TocPopup()}>Terms and Conditions.</a>
             </label>
-            {isChecked? 
-                <div className='w-full' onClick={handleSubmit}>
+            {isChecked && !loading? 
+                <div className='w-full' onClick={loading? null: handleSubmit}>
                     <Button type="login" />
                 </div>
             :

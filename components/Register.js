@@ -25,6 +25,8 @@ const Register = ({isVisible, onClose}) => {
         verified: false
     })
 
+    console.log(selectedImage)
+
     const handleChange = (e) =>{
         setForm(prevForm => ({
             ...form,
@@ -102,7 +104,7 @@ const Register = ({isVisible, onClose}) => {
     }
 
   return (
-    <div id="closer" onClick={handleClose} className='bg-black100 bg-opacity-25 fixed w-screen h-screen z-10 flex items-center justify-center backdrop-blur-sm'>
+    <div id="closer" className='bg-black100 bg-opacity-25 fixed w-screen h-screen z-10 flex items-center justify-center backdrop-blur-sm'>
         <div className='main relative flex flex-col mx-80 h-4/5 p-6 bg-white50 rounded-sm gap-8 shadow-lg'>
             <div className='flex justify-between items-center'>
                 <h3 className='text-primary'> Register </h3>
@@ -260,9 +262,9 @@ const Register = ({isVisible, onClose}) => {
                             </label>
                             
                             <div className='flex w-full justify-between'>
-                                <label><input id='gender' type="radio" name="gender" value="M" onChange={handleChange} className='m-0' required/> Male</label>
-                                <label><input id='gender' type="radio" name="gender" value="F" onChange={handleChange} className='m-0' required/> Female</label>
-                                <label><input id='gender' type="radio" name="gender" value="O" onChange={handleChange} className='m-0' required/> Other</label>
+                                <label><input type="radio" name="gender" value="M" onChange={handleChange} className='m-0' required/> Male</label>
+                                <label><input type="radio" name="gender" value="F" onChange={handleChange} className='m-0' required/> Female</label>
+                                <label><input type="radio" name="gender" value="O" onChange={handleChange} className='m-0' required/> Other</label>
                             </div>
                             
                         </div>

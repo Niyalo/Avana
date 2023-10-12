@@ -27,7 +27,7 @@ const profile = () => {
           console.error('Error fetching user data:', error);
         });
     }
-  }, [username]);
+  }, []);
 
     const [projects, setProjects] = useState([]);
 
