@@ -70,14 +70,14 @@ const logged = () => {
     fetchData(); // Call the fetch function when the component mounts
   }, []);
 
-  const programmers = profile? profile.programmers.map(items => (
+  const programmers = profile.programmers? profile.programmers.map(items => (
     <div className='flex flex-col items-center gap-4'>
       <div className='relative w-24 h-24'><Image src={`http://35.232.216.253/uploads/original/f8/88/6bee943c18b8ba921f7eed571af2.jpg`} fill={true} objectFit='cover' className='border-2 object-top overflow-hidden rounded-full border-secondary object-cover'/></div>
       <p>{items.name}</p>
     </div>
   )): null
     
-  const architects = profile? profile.architects.map(items =>(
+  const architects = profile.architects? profile.architects.map(items =>(
     <div className='flex flex-col items-center gap-4'>
       <div className='relative w-24 h-24'><Image src={`http://35.232.216.253/uploads/original/f8/88/6bee943c18b8ba921f7eed571af2.jpg`} fill={true} objectFit='cover' className='border-2 object-top overflow-hidden rounded-full border-secondary object-cover'/></div>
       <p>{items.name}</p>

@@ -10,7 +10,7 @@ import { usePathname } from 'next/navigation';
 const profile = () => {
   const pathname = usePathname()
   const username = pathname.split('/')[1];
-  const [userData, setUserData] = useState(null);
+  const [userData, setUserData] = useState([]);
   
   useEffect(() => {
     const fetchData = async () => {
@@ -29,7 +29,7 @@ const profile = () => {
     fetchData(); // Call the fetch function when the component mounts
   }, []);
 
-    const enrolledProjects = userData? userData.enrolled_projects.map(items => (
+    const enrolledProjects = userData.enrolled_projects? userData.enrolled_projects.map(items => (
         <div className="w-full px-8 py-4 border-t border-b border-zinc-400 justify-start items-center gap-6 inline-flex hover:shadow-sm hover:scale-[1.01] hover:bg-white100">
         <p className="text-sm">{items.id}</p>
         <div className="grow shrink basis-0 justify-between items-center flex">
@@ -42,7 +42,7 @@ const profile = () => {
         </div>
     )):null
 
-    const availableProjects = userData? userData.not_enrolled_projects.map(items => (
+    const availableProjects = userData.not_enrolled_projects? userData.not_enrolled_projects.map(items => (
         <div className="w-full px-8 py-4 border-t border-b border-zinc-400 justify-start items-center gap-6 inline-flex hover:shadow-sm hover:bg-white100">
         <p className="text-sm">{items.id}</p>
         <div className="grow shrink basis-0 justify-between items-center flex">
@@ -57,19 +57,19 @@ const profile = () => {
 
     return (
         <div className='main flex flex-col py-4 gap-10'>
-            <Header username={userData.username}/>
+            <Header username={userData && userData.username}/>
             <div className='flex items-center justify-between'>
                 <div className='flex gap-4 items-center'>
                     <Image src="http://35.232.216.253/uploads/original/f8/88/6bee943c18b8ba921f7eed571af2.jpg" width={80} height={80} layout="fixed" className='border-2 h-[80px] object-cover object-top overflow-hidden rounded-full border-secondary'/>
                     <div className='flex flex-col'>
-                        <h3 className='text-primary'>{userData.firstName} {userData.lastName}</h3>
-                        <p>{userData.title}</p>
+                        <h3 className='text-primary'>{userData && userData.firstName} {userData && userData.lastName}</h3>
+                        <p>{userData && userData.title}</p>
                     </div>
                 </div>
                 <div className='flex flex-col gap-2'>
-                   <div className='flex gap-4'><Mail className='text-xl text-primary'/><p>{userData.email}</p></div>
-                   <div className='flex gap-4'><LocationCity className='text-xl text-primary' /><p>{userData.homeAddress}</p></div>
-                   <div className='flex gap-4'><Phone className='text-xl text-primary' /><p>{userData.phone}</p></div>
+                   <div className='flex gap-4'><Mail className='text-xl text-primary'/><p>{userData && userData.email}</p></div>
+                   <div className='flex gap-4'><LocationCity className='text-xl text-primary' /><p>{userData && userData.homeAddress}</p></div>
+                   <div className='flex gap-4'><Phone className='text-xl text-primary' /><p>{userData && userData.phone}</p></div>
                 </div>
             </div>
             <div className='flex h-[400px] gap-6 w-full'>
