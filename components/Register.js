@@ -23,6 +23,7 @@ const Register = ({isVisible, onClose}) => {
         phone: '',
         username: '',
         gender: '',
+        img:'',
         verified: false
     })
 
@@ -38,6 +39,20 @@ const Register = ({isVisible, onClose}) => {
           }
     }
 
+    async function uploadImage(file) {
+        const formData = new FormData();
+        formData.append('file', file);
+    
+        const response = await axios.post('/api/upload_image', formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+                'X-Session-ID': '42fe4871f35ae4e74511a3cdc1d1c48f4a007e5da4d49c02'
+            }
+        });
+    
+        return response.data;
+    }
+
     const handleSubmit = async (e) => {
         setDisable(true)
         e.preventDefault();
@@ -45,20 +60,7 @@ const Register = ({isVisible, onClose}) => {
         const formData = { ...form }
         delete formData.confPassword;
 
-        async function uploadImage(file) {
-            const formData = new FormData();
-            formData.append('img', file);
-        
-            const response = await axios.post('/api/upload_image', formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data',
-                    'X-Session-ID': '42fe4871f35ae4e74511a3cdc1d1c48f4a007e5da4d49c02'
-                }
-            });
-        
-            return response.data;
-        }
-   
+          
         // try {
         //     const checkResponse = await fetch('localhost:8000/registerinfo', {
         //       method: 'GET', // Use GET to retrieve data without modifying it
@@ -290,6 +292,7 @@ const Register = ({isVisible, onClose}) => {
                         onChange={({ target }) => {
                             if (target.files) {
                             const file = target.files[0];
+                            form.img=uploadImage(file)
                             setSelectedImage(URL.createObjectURL(file));
                                 }
                         }}

@@ -9,42 +9,18 @@ import { usePathname } from 'next/navigation';
 
 const profile = () => {
   const pathname = usePathname()
- 
   const username = pathname.split('/')[1];
-  
   const [userData, setUserData] = useState(null);
-
+  
   useEffect(() => {
-    if (username) {
-      // Fetch user data for the specific username from your API
-      fetch(`localhost:8000/profile/${username}`)
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error('Failed to fetch user data');
-          }
-          return response.json();
-        })
-        .then((data) => {
-          setUserData(data);
-        })
-        .catch((error) => {
-          console.error('Error fetching user data:', error);
-        });
-    }
-  }, []);
-
-    const [projects, setProjects] = useState([]);
-
-  useEffect(() => {
-    // Fetch data from the API here
     const fetchData = async () => {
       try {
-        const response = await fetch('localhost:8000/projects');
+        const response = await fetch(`localhost:8000/${username}`);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
         const data = await response.json();
-        setProjects(data); // Update state with fetched data
+        setUserData(data); // Update state with fetched data
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -53,26 +29,26 @@ const profile = () => {
     fetchData(); // Call the fetch function when the component mounts
   }, []);
 
-    const enrolledProjects = projects? projects.map(items => (
+    const enrolledProjects = userData? userData.enrolled_projects.map(items => (
         <div className="w-full px-8 py-4 border-t border-b border-zinc-400 justify-start items-center gap-6 inline-flex hover:shadow-sm hover:scale-[1.01] hover:bg-white100">
         <p className="text-sm">{items.id}</p>
         <div className="grow shrink basis-0 justify-between items-center flex">
             <div className="flex-col justify-start items-start gap-1 inline-flex">
-                <p>{items.name}</p>
-                <p className='text-sm'>{items.desc}</p>
+                <p>{items.project_name}</p>
+                <p className='text-sm overflow-hidden'>{items.project-description}</p>
             </div>
             <Button label="Learn more" type= "text" />
         </div>
         </div>
     )):null
 
-    const availableProjects = projects? projects.map(items => (
+    const availableProjects = userData? userData.not_enrolled_projects.map(items => (
         <div className="w-full px-8 py-4 border-t border-b border-zinc-400 justify-start items-center gap-6 inline-flex hover:shadow-sm hover:bg-white100">
         <p className="text-sm">{items.id}</p>
         <div className="grow shrink basis-0 justify-between items-center flex">
             <div className="flex-col justify-start items-start gap-1 inline-flex">
-                <p>{items.name}</p>
-                <p className='text-sm'>{items.desc}</p>
+                <p>{items.project_name}</p>
+                <p className='text-sm overflow-hidden'>{items.project_description}</p>
             </div>
             <Button label="Request Enrollment" type= "add" className='text-sm'/>
         </div>
@@ -81,19 +57,19 @@ const profile = () => {
 
     return (
         <div className='main flex flex-col py-4 gap-10'>
-            <Header username={username}/>
+            <Header username={userData.username}/>
             <div className='flex items-center justify-between'>
                 <div className='flex gap-4 items-center'>
                     <Image src="http://35.232.216.253/uploads/original/f8/88/6bee943c18b8ba921f7eed571af2.jpg" width={80} height={80} layout="fixed" className='border-2 h-[80px] object-cover object-top overflow-hidden rounded-full border-secondary'/>
                     <div className='flex flex-col'>
-                        <h3 className='text-primary'>{username}</h3>
-                        <p>Sup</p>
+                        <h3 className='text-primary'>{userData.firstName} {userData.lastName}</h3>
+                        <p>{userData.title}</p>
                     </div>
                 </div>
                 <div className='flex flex-col gap-2'>
-                   <div className='flex gap-4'><Mail className='text-xl text-primary'/><p> Email</p></div>
-                   <div className='flex gap-4'><LocationCity className='text-xl text-primary' /><p> HomeAddress</p></div>
-                   <div className='flex gap-4'><Phone className='text-xl text-primary' /><p>Phone</p></div>
+                   <div className='flex gap-4'><Mail className='text-xl text-primary'/><p>{userData.email}</p></div>
+                   <div className='flex gap-4'><LocationCity className='text-xl text-primary' /><p>{userData.homeAddress}</p></div>
+                   <div className='flex gap-4'><Phone className='text-xl text-primary' /><p>{userData.phone}</p></div>
                 </div>
             </div>
             <div className='flex h-[400px] gap-6 w-full'>

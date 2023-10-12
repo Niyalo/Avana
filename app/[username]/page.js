@@ -56,7 +56,7 @@ const logged = () => {
     // Fetch data from the API here
     const fetchData = async () => {
       try {
-        const response = await fetch('localhost:8000/profile');
+        const response = await fetch('localhost:8000');
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -101,10 +101,7 @@ const logged = () => {
           <div className='flex justify-between bg-white50 rounded-sm grow py-4 px-4'>
               <div className='flex gap-4 items-center'>
                   <Image src="http://35.232.216.253/uploads/original/f8/88/6bee943c18b8ba921f7eed571af2.jpg" width={40} height={40} layout="fixed" className='border-2 h-[40px] object-cover object-top overflow-hidden rounded-full border-secondary'/>
-                  <div className='flex flex-col'>
-                      <h4 className='text-primary capitalize font-bold'>{username}</h4>
-                      <p>Architect</p>
-                  </div>
+                  <h4 className='text-primary capitalize font-bold'>{username}</h4>
               </div>
               <div className='flex gap-4'>
                 <Link href={`${pathname}/profile`}><Button type="profile" /></Link>
