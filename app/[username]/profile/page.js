@@ -6,6 +6,7 @@ import Image from 'next/image'
 import { LocationCity, Mail, Phone } from '@mui/icons-material';
 import { usePathname } from 'next/navigation';
 import projects from '@/content/projects';
+import toast from 'react-hot-toast';
 
 
 const profile = () => {
@@ -37,9 +38,9 @@ const profile = () => {
       })
      
       if (response.ok) {
-        window.alert('Succesfully Requested Enrollment');
+       toast.success('Succesfully Requested Enrollment');
       } else {
-          window.alert('Enrollment Request Failed');
+          toast.error('Enrollment Request Failed');
         }
     } catch (error) {
       console.error('Error requesting:', error);

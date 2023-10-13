@@ -5,6 +5,7 @@ import React, { Fragment, useState } from 'react'
 import Link from 'next/link';
 import Button from './Button';
 import axios from 'axios';
+import toast from 'react-hot-toast';
 
 const Register = ({isVisible, onClose}) => {
 
@@ -100,16 +101,16 @@ const Register = ({isVisible, onClose}) => {
          
           if (response.ok) {
             // Successful registration
-            window.alert('You have successfully registered. Check your email.');
+            toast.success('You have successfully registered. Check your email.');
             () => onClose()
           } else {
-              window.alert('Registration failed. Please try again later.');
+              toast.error('Registration failed. Please try again later.');
             }
         } catch (error) {
             setDisable(false)
           // Handle network-related errors
           console.error('Error registering:', error);
-          window.alert('Error registering. Please check your internet connection.');
+          toast.error('Error registering. Please check your internet connection.');
         }
       };
 

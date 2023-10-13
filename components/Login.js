@@ -5,6 +5,7 @@ import React, { useState } from 'react'
 import Link from 'next/link';
 import Button from './Button';
 import { useRouter } from 'next/navigation';
+import toast from 'react-hot-toast';
 
 const Login = ({TocPopup}) => {
 
@@ -41,6 +42,7 @@ const Login = ({TocPopup}) => {
           
           const errorData = await response.json();
           if(response.ok){
+            toast.success("Logging In")
             setErrorMsg(false)
             router.push(`/${form.username}`)
          }
@@ -53,7 +55,7 @@ const Login = ({TocPopup}) => {
         }catch (errorData) {
             setLoading(false)
           setErrorMsg(true)
-          console.log("Invalid Credentials")
+          toast.error("Invalid Credentials")
         }
     }
       

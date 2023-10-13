@@ -1,6 +1,7 @@
 import './globals.css'
 import localFont from 'next/font/local'
 import Providers from './providers'
+import { Toaster } from 'react-hot-toast'
 
 const ayuthaya = localFont({
   src: './Ayuthaya.ttf',
@@ -17,6 +18,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${ayuthaya.variable} font-sans`}>
         <Providers>{children}</Providers>
+        <Toaster position='top-right'/>
       </body>
     </html>
   )

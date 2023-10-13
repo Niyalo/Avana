@@ -22,7 +22,7 @@ const AdminNavbar = (props) => {
                 <p>Admin</p>
             </div>
         </div>
-        <div>
+        <div className='overflow-auto'>
             <Link href={`/useradmin/[username]/na`} as={`/useradmin/${props.username}/na`} className={`block w-full text-base ${toggle==1? `bg-primary text-white50` : `hover:bg-white100 text-black150`}  px-3 py-4 border-t border-b border-grey50 justify-start`} onClick={() => handleClick(1)}>New Applications</Link>
             <Link href={`/useradmin/[username]/tac`} as={`/useradmin/${props.username}/tac`} className={`block w-full text-base ${toggle==2? `bg-primary text-white50` : `hover:bg-white100 text-black150`} px-3 py-4 border-t border-b border-grey50 justify-start`} onClick={() => handleClick(2)}>Terms and Conditions</Link>
             <Link href={`/useradmin/[username]/pp`} as={`/useradmin/${props.username}/pp`} className={`block w-full text-base ${toggle==3? `bg-primary text-white50` : `hover:bg-white100 text-black150`} px-3 py-4 border-t border-b border-grey50 justify-start`} onClick={() => handleClick(3)}>Programmers Profile</Link>
