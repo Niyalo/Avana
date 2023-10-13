@@ -38,12 +38,12 @@ const profile = () => {
       })
      
       if (response.ok) {
-       toast.success('Succesfully Requested Enrollment');
+       toast.error('Succesfully Requested Enrollment');
       } else {
           toast.error('Enrollment Request Failed');
         }
     } catch (error) {
-      console.error('Error requesting:', error);
+      toast.error('Error requesting');
 
     }
   };
@@ -87,7 +87,23 @@ const profile = () => {
                 <p>{items.project_name}</p>
                 <p className='text-sm overflow-hidden'>{items.project_description}</p>
             </div>
-            <div onClick={() => handleRequest(items.project_name)}><Button label="Request Enrollment" type= "add" className='text-sm'/></div>
+            <div
+              onClick={() => {
+                toast(
+                  (t) => (
+                    <div className='flex flex-col gap-4 items-center'>
+                      <p>Request {items.name} ?</p>
+                      <div className='flex w-full justify-between'>
+                        <button onClick={() => {handleRequest(items.project_name); toast.dismiss(t.id)}} className='bg-green border p-2 text-white0'>Request</button>
+                        <button onClick={() => toast.dismiss(t.id)} className='bg-white100 border p-2'>Dismiss</button>
+                      </div>
+                    </div>
+                  ), {
+                    position: "top-center"
+                  }
+                );
+              }}
+            ><Button label="Request Enrollment" type= "add" className='text-sm'/></div>
         </div>
         </div>
     )):null
