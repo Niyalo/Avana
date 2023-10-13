@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
+
 const AdminNavbar = (props) => {
 
   const [toggle, setToggle] = useState(0)
@@ -13,11 +14,11 @@ const AdminNavbar = (props) => {
   }
 
   return (
-    <div className='flex flex-col bg-white50 shadow-lg w-[25%] h-max pt-6 rounded-sm overflow-hidden gap-10'>
+    <div className='flex flex-col bg-white50 shadow-lg w-[25%] min-w-[230px] h-full pt-6 rounded-sm overflow-hidden gap-10'>
         <div className='flex flex-col gap-4 items-center'>
             <Image src="http://35.232.216.253/uploads/original/f8/88/6bee943c18b8ba921f7eed571af2.jpg" width={80} height={80} layout="fixed" className='border-2 h-[80px] object-cover object-top overflow-hidden rounded-full border-secondary'/>
             <div className='flex flex-col items-center text-center'>
-                <h3 className='text-primary'>Half Guy</h3>
+                <h3 className='text-primary capitalize'>{props.username}</h3>
                 <p>Admin</p>
             </div>
         </div>

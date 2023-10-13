@@ -62,7 +62,7 @@ const handleChange = (e) =>{
     <div className='adminContent flex flex-col gap-6'>
       <div className='flex justify-between items-center'>
             <h2 className='px-2'>Create Project</h2>
-            <Button type="add" label="Create Project"/>
+            <div onClick={handleSubmit}><Button type="add" label="Create Project"/></div>
         </div>
       <div className='flex flex-col gap-10 overflow-y-scroll overflow-x-auto px-2 pr-4'>
         <div className='flex flex-col gap-2 h-max'>
@@ -78,7 +78,7 @@ const handleChange = (e) =>{
         </div>
         <div className='bg-primary py-1 w-full'></div>
         <h4 className='text-primary text-center'>Project Sections</h4>
-        <div className='flex flex-col gap-6'>
+        <div className='flex flex-col gap-6 w-full'>
           <div className='flex flex-col gap-2 h-max'>
               <input type="text" placeholder='Section title (Optional)' className='formInput' name='sectionTitle' onChange={handleChange}/>
           </div>
@@ -86,20 +86,18 @@ const handleChange = (e) =>{
               <h4 className='text-primary'>Upload Section Image</h4>
               <input type="file" accept="image/*" name='sectionImage' onChange={handleFileChange} placeholder='Upload Project Image' className='text-base h-[80px] text-black150 border-none file:w-full file:h-full file:cursor-pointer file:bg-white100  file:m-0 file:mt-1 file:text-black150 file:px-3 file:border-none'/>
           </div>
-          <div className='flex flex-col gap-2 h-max w-max'>
+          <div className='flex flex-col gap-2 h-max w-full'>
               <h4 className='text-primary'>Section Description</h4>
               <textarea
                   name='sectionDesc' 
                   onChange={handleChange}
-                  className="h-[200px] rounded-sm p-3 w-full focus:outline-none"
+                  className="h-[200px] rounded-sm w-full p-3 focus:outline-none"
                   placeholder='Add Description of Project'
-                  rows={10}
-                  cols={80}
-              />
+               />
           </div>
           <hr className='w-full border-primary border-dashed' />
         </div>
-        <div className='text-center mx-5' onClick={handleSubmit}><Button type="add" label="Add Sections" /></div>
+        <div className='text-center mx-5'><Button type="add" label="Add Sections" /></div>
       </div> 
     </div>
   )

@@ -2,27 +2,28 @@
 
 import { Button } from '@/components'
 import React, {useState, useEffect} from 'react'
+import tacContent from '@/content/tac';
 
 const tac = () => {
-    const [tacContent, setTacContent] = useState([]);
+  //   const [tacContent, setTacContent] = useState([]);
 
-  useEffect(() => {
-    // Fetch data from the API here
-    const fetchData = async () => {
-      try {
-        const response = await fetch('localhost:8000/tacContent');
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        const data = await response.json();
-        setTacContent(data); // Update state with fetched data
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
+  // useEffect(() => {
+  //   // Fetch data from the API here
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await fetch('localhost:8000/tacContent');
+  //       if (!response.ok) {
+  //         throw new Error('Network response was not ok');
+  //       }
+  //       const data = await response.json();
+  //       setTacContent(data); // Update state with fetched data
+  //     } catch (error) {
+  //       console.error('Error fetching data:', error);
+  //     }
+  //   };
 
-    fetchData(); // Call the fetch function when the component mounts
-  }, []);
+  //   fetchData(); // Call the fetch function when the component mounts
+  // }, []);
 
     const [editableText, setEditableText] = useState();
 
@@ -34,11 +35,9 @@ const tac = () => {
         <div className='flex flex-col gap-2'>
             <h4>{items.title}</h4>
             <textarea
-                className="overflow-y-scroll w-full overflow-hidden h-full appearance-none overflow-x-auto border-none rounded-sm py-4 px-4 focus:outline-none"
+                className="overflow-y-scroll w-full overflow-hidden h-[200px] appearance-none overflow-x-auto border-none rounded-sm py-4 px-4 focus:outline-none"
                 value={items.desc}
                 onChange={handleTextChange}
-                rows={5}
-                cols={80} 
             />
         </div>
     )):null

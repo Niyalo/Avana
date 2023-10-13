@@ -1,5 +1,6 @@
 import './globals.css'
 import localFont from 'next/font/local'
+import Providers from './providers'
 
 const ayuthaya = localFont({
   src: './Ayuthaya.ttf',
@@ -15,7 +16,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${ayuthaya.variable} font-sans`}>
-        {children}
+        <Providers>{children}</Providers>
       </body>
     </html>
   )

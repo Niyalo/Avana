@@ -9,9 +9,9 @@ export default function admin({ children }) {
   const username = pathname.split('/')[2];
 
   return (
-    <section className='main relative flex flex-col py-2 gap-4'>
+    <section className='main w-screen h-screen relative flex flex-col py-2 gap-4'>
         <Header username={username}/>
-        <div className='flex w-full gap-6'>
+        <div className='flex w-full h-full gap-6'>
             <AdminNavbar username={username}/>
             {children}
         </div>

@@ -92,7 +92,7 @@ const profile = () => {
     )):null
 
     return (
-        <div className='main flex flex-col py-4 gap-10'>
+        <div className='main flex flex-col py-4 gap-10 w-screen h-screen'>
             <Header username={userData && userData.username}/>
             <div className='flex items-center justify-between'>
                 <div className='flex gap-4 items-center'>
@@ -108,16 +108,16 @@ const profile = () => {
                    <div className='flex gap-4'><Phone className='text-xl text-primary' /><p>{userData && userData.phone}</p></div>
                 </div>
             </div>
-            <div className='flex h-[400px] gap-6 w-full'>
+            <div className='flex h-full gap-6 w-full'>
                 <div className='bg-white50 shadow-lg h-full w-full rounded-sm relative'>
                     <Topbar label1="Current" label2="Completed" label3="Cancelled" onToggle={handleFilter}/>
-                    <div className='flex flex-col mt-4 h-5/6 w-full overflow-y-scroll overflow-x-hidden'>
+                    <div className='flex flex-col mt-4 h-5/6 w-full overflow-y-auto overflow-x-hidden'>
                         {enrolledProjects}
                     </div>
                 </div>
                 <div className='bg-white50 shadow-lg h-full w-full rounded-sm'>
                     <h3 className='text-green px-6 py-2'>Available Projects</h3>
-                    <div className='flex flex-col mt-4 h-5/6 w-full overflow-y-scroll overflow-x-hidden'>
+                    <div className='flex flex-col mt-4 h-5/6 w-full overflow-y-auto overflow-x-hidden'>
                         {availableProjects}
                     </div>
                 </div>
