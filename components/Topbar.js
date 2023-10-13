@@ -7,6 +7,7 @@ const Topbar = (props) => {
   const [toggle, setToggle] = useState(1)
 
   function handleClick(prop){
+    props.onToggle(prop)
     setToggle(prevToggle => prevToggle=prop)
   }
 

@@ -5,19 +5,27 @@ import React,{useState, useEffect} from 'react'
 import Image from 'next/image'
 import { LocationCity, Mail, Phone } from '@mui/icons-material';
 import { usePathname } from 'next/navigation';
+import projects from '@/content/projects';
 
 
 const profile = () => {
   const pathname = usePathname()
   const username = pathname.split('/')[1];
+
   const [userData, setUserData] = useState([]);
+  const [projectStatus, setProjectStatus] = useState(1)
+
+  const handleFilter = (status) => {
+    setProjectStatus(status)
+  }
 
   
   const handleRequest = async (project_name) => {
 
-    const formData = new FormData();
-    formData.append('project_name', project_name);
-    formData.append('username', username);
+    const requestData = {
+      project_name: project_name,
+      username: username
+    }
 
     try {
       const response = await fetch('http://127.0.0.1:8000/request_enroll/', {
@@ -25,7 +33,7 @@ const profile = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(requestData),
       })
      
       if (response.ok) {
@@ -56,12 +64,14 @@ const profile = () => {
     fetchData(); // Call the fetch function when the component mounts
   }, []);
 
-    const enrolledProjects = userData.enrolled_projects? userData.enrolled_projects.map(items => (
+
+    const enrolledProjects = userData.enrolled_projects? userData.enrolled_projects
+    .filter((items) => items.project_status === `${projectStatus === 1? "C": projectStatus === 2? "X" : projectStatus === 3? "Y" : ""}`)
+    .map(items => (
         <div className="w-full px-8 py-4 border-t border-b border-zinc-400 justify-start items-center gap-6 inline-flex hover:shadow-sm hover:scale-[1.01] hover:bg-white100">
-        <p className="text-sm">{items.id}</p>
         <div className="grow shrink basis-0 justify-between items-center flex">
             <div className="flex-col justify-start items-start gap-1 inline-flex">
-                <p>{items.project_name}</p>
+                <p>{items.project_namename}</p>
                 <p className='text-sm overflow-hidden'>{items.project_description}</p>
             </div>
             <Button label="Learn more" type= "text" />
@@ -71,7 +81,6 @@ const profile = () => {
 
     const availableProjects = userData.not_enrolled_projects? userData.not_enrolled_projects.map(items => (
         <div className="w-full px-8 py-4 border-t border-b border-zinc-400 justify-start items-center gap-6 inline-flex hover:shadow-sm hover:bg-white100">
-        <p className="text-sm">{items.id}</p>
         <div className="grow shrink basis-0 justify-between items-center flex">
             <div className="flex-col justify-start items-start gap-1 inline-flex">
                 <p>{items.project_name}</p>
@@ -101,7 +110,7 @@ const profile = () => {
             </div>
             <div className='flex h-[400px] gap-6 w-full'>
                 <div className='bg-white50 shadow-lg h-full w-full rounded-sm relative'>
-                    <Topbar label1="Current" label2="Completed" label3="Cancelled" />
+                    <Topbar label1="Current" label2="Completed" label3="Cancelled" onToggle={handleFilter}/>
                     <div className='flex flex-col mt-4 h-5/6 w-full overflow-y-scroll overflow-x-hidden'>
                         {enrolledProjects}
                     </div>

@@ -7,6 +7,7 @@ import Image from 'next/image'
 const pp = () => {
 
   const [profile, setProfile] = useState([]);
+  const [user, setUser] = useState('')
 
   useEffect(() => {
     // Fetch data from the API here
@@ -29,12 +30,13 @@ const pp = () => {
     const [popup, setPopup] = useState(false)
     const [popupMail, setPopupMail] = useState(false)
 
-    const handlePopup = (e) =>{
+    const handlePopup = (e, name) =>{
+      setUser(name)
       if(e.target.id === "popupOpener") setPopup(true)
     }
 
   const programmers = profile? profile.map(items => (
-    <div id="popupOpener" onClick={handlePopup} className="cursor-pointer w-full px-8 py-4 border bg-white0 border-grey50 rounded-sm justify-start items-center gap-6 inline-flex hover:shadow-sm hover:scale-[1.01] hover:bg-white100">
+    <div id="popupOpener" onClick={() => handlePopup(items.name)} className="cursor-pointer w-full px-8 py-4 border bg-white0 border-grey50 rounded-sm justify-start items-center gap-6 inline-flex hover:shadow-sm hover:scale-[1.01] hover:bg-white100">
     <p id="popupOpener" className="text-sm">{items.id}</p>
     <div id="popupOpener" className="grow shrink basis-0 justify-between items-center flex">
         <div id="popupOpener" className='flex gap-4 items-center'>
@@ -55,7 +57,7 @@ const pp = () => {
       <div className='flex flex-col gap-2 overflow-y-scroll overflow-x-auto px-2 pr-4'>
         {programmers}
       </div> 
-      <ProgProfile isVisible={popup} onClose={() => setPopup(false)}/>
+      <ProgProfile username={user} isVisible={popup} onClose={() => setPopup(false)}/>
       <Mail isVisible={popupMail} onClose={() => setPopupMail(false)}/>
     </div>
   )
