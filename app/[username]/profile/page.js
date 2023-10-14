@@ -79,13 +79,13 @@ const profile = () => {
         <div className="w-full px-8 py-4 border-t border-b border-zinc-400 justify-start items-center gap-6 inline-flex hover:shadow-sm hover:scale-[1.01] hover:bg-white100">
         <div className="grow shrink basis-0 justify-between items-center flex">
             <div className="flex-col justify-start items-start gap-1 inline-flex">
-                <p>{items.project_namename}</p>
+                <p>{items.project_name}</p>
                 <p className='text-sm overflow-hidden'>{items.project_description}</p>
             </div>
             <Button label="Learn more" type= "text" />
         </div>
         </div>
-    )):null
+    )):<p className='w-full px-8 pb-4 text-grey50'> No Projects to show </p>
 
     const availableProjects = userData.not_enrolled_projects? userData.not_enrolled_projects.map(items => (
         <div className="w-full px-8 py-4 border-t border-b border-zinc-400 justify-start items-center gap-6 inline-flex hover:shadow-sm hover:bg-white100">
@@ -113,7 +113,21 @@ const profile = () => {
             >{!items.project_status === "R" && <Button label="Request Enrollment" type= "add" className='text-sm'/>}</div>
         </div>
         </div>
-    )):null
+    )):<p className='w-full px-8 pb-4 text-grey50'> No projects available at the moment. </p>
+
+    const requestedProjects = userData.requested_Projects? userData.requested_Projects
+    .filter(items => items.project_status === 'R')
+    .map(items => (
+        <div className="w-full px-8 py-4 border-t border-b border-zinc-400 justify-start items-center gap-6 inline-flex hover:shadow-sm hover:scale-[1.01] hover:bg-white100">
+        <div className="grow shrink basis-0 justify-between items-center flex">
+            <div className="flex-col justify-start items-start gap-1 inline-flex">
+                <p>{items.project_name}</p>
+                <p className='text-sm overflow-hidden'>{items.project_description}</p>
+            </div>
+            <p> Pending... </p>
+        </div>
+        </div>
+    )):<p className='w-full px-8 pb-4 text-grey50'> No Requests </p>
 
     return (
         <div className='main flex flex-col py-4 gap-10 w-screen h-screen'>
@@ -134,16 +148,27 @@ const profile = () => {
             </div>
             <div className='flex h-full gap-6 w-full'>
                 <div className='bg-white50 shadow-lg h-full w-full rounded-sm relative'>
-                    <Topbar label1="Current" label2="Completed" label3="Cancelled" label4="Pending" onToggle={handleFilter}/>
+                    <div className='flex justify-between w-full'>
+                      <p className='text-primary text-lg px-6 py-2 font-bold'>Enrolled Projects</p>
+                      <Topbar label1="Current" label2="Completed" label3="Cancelled" onToggle={handleFilter}/>
+                    </div>
                     <div className='flex flex-col mt-4 h-5/6 w-full overflow-y-auto overflow-x-hidden'>
                         {enrolledProjects}
                     </div>
                 </div>
-                <div className='bg-white50 shadow-lg h-full w-full rounded-sm'>
-                    <h3 className='text-green px-6 py-2'>Available Projects</h3>
-                    <div className='flex flex-col mt-4 h-5/6 w-full overflow-y-auto overflow-x-hidden'>
-                        {availableProjects}
-                    </div>
+                <div className='flex flex-col gap-6 w-full'>
+                  <div className='bg-white50 shadow-lg h-max w-full rounded-sm relative'>
+                        <p className='text-primary text-lg px-6 py-2 font-bold'>Requested Projects</p>
+                      <div className='flex flex-col mt-4 h-5/6 w-full overflow-y-auto overflow-x-hidden'>
+                          {requestedProjects}
+                      </div>
+                  </div>
+                  <div className='bg-white50 shadow-lg h-full w-full rounded-sm'>
+                  <p className='text-green text-lg px-6 py-2 font-bold'>Available Projects</p>
+                      <div className='flex flex-col mt-4 h-5/6 w-full overflow-y-auto overflow-x-hidden'>
+                          {availableProjects}
+                      </div>
+                  </div>
                 </div>
             </div>
         </div>
