@@ -101,7 +101,8 @@ const Register = ({isVisible, onClose}) => {
           if (response.ok) {
             // Successful registration
             toast.success('You have successfully registered. Check your email.');
-            () => onClose()
+            setDisable(true)
+            onClose
           } else {
               toast.error('Registration failed. Please try again later.');
             }

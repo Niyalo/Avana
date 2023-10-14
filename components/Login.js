@@ -39,14 +39,16 @@ const Login = ({TocPopup}) => {
             },
             body: JSON.stringify(form),
           });
+
+          const data = await response.json();
           
         //   const errorData = await response.json();
-          if(response.status === 200){
+          if(data.title === "User"){
             toast.success("Logging In")
             setErrorMsg(false)
             router.push(`/${form.username}`)
          }
-         if(response.status === 302){
+         if(data.title === "Admin"){
             toast.success("Logging In As Administrator")
             setErrorMsg(false)
             router.push(`/useradmin/${form.username}/na`)
