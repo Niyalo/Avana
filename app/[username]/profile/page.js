@@ -153,20 +153,20 @@ const profile = () => {
                       <Topbar label1="Current" label2="Completed" label3="Cancelled" onToggle={handleFilter}/>
                     </div>
                     <div className='flex flex-col mt-4 h-5/6 w-full overflow-y-auto overflow-x-hidden'>
-                        {enrolledProjects}
+                      {enrolledProjects && enrolledProjects.length > 0 ? enrolledProjects : <p className='w-full px-8 pb-4 text-grey50'>No Projects to display.</p>}
                     </div>
                 </div>
                 <div className='flex flex-col gap-6 w-full'>
                   <div className='bg-white50 shadow-lg h-max w-full rounded-sm relative'>
                         <p className='text-primary text-lg px-6 py-2 font-bold'>Requested Projects</p>
                       <div className='flex flex-col mt-4 h-5/6 w-full overflow-y-auto overflow-x-hidden'>
-                          {requestedProjects}
+                          {requestedProjects && requestedProjects.length>0? requestedProjects : <p className='w-full px-8 pb-4 text-grey50'>No Projects requested.</p>}
                       </div>
                   </div>
                   <div className='bg-white50 shadow-lg h-full w-full rounded-sm'>
                   <p className='text-green text-lg px-6 py-2 font-bold'>Available Projects</p>
                       <div className='flex flex-col mt-4 h-5/6 w-full overflow-y-auto overflow-x-hidden'>
-                          {availableProjects}
+                          {availableProjects && availableProjects.length>0? availableProjects : <p className='w-full px-8 pb-4 text-grey50'>No available projects.</p>}
                       </div>
                   </div>
                 </div>
