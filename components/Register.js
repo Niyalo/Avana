@@ -6,6 +6,7 @@ import Link from 'next/link';
 import Button from './Button';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import { ENROLL_REQUESTS_API, REGISTER_INFO_API } from '@/apiConfig';
 
 const Register = ({isVisible, onClose}) => {
 
@@ -90,7 +91,7 @@ const Register = ({isVisible, onClose}) => {
         //   }
     
         try {
-          const response = await fetch('http://127.0.0.1:8000/registerinfo/', {
+          const response = await fetch(REGISTER_INFO_API, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -102,8 +103,9 @@ const Register = ({isVisible, onClose}) => {
             // Successful registration
             toast.success('You have successfully registered. Check your email.');
             setDisable(true)
-            onClose
+            onClose()
           } else {
+            setDisable(true)
               toast.error('Registration failed. Please try again later.');
             }
         } catch (error) {
@@ -115,10 +117,6 @@ const Register = ({isVisible, onClose}) => {
       };
 
     if(!isVisible) return null;
-
-    const handleClose = (e) => {
-        if(e.target.id==="closer") return onClose()
-    }
 
   return (
     <div id="closer" className='bg-black100 bg-opacity-25 fixed w-screen h-screen z-10 flex items-center justify-center backdrop-blur-sm'>

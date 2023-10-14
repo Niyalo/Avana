@@ -5,6 +5,7 @@ import Image from 'next/image'
 import {Button, Login, Register, withAuth} from '@/components'
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { HOME_API } from '@/apiConfig';
 
 
 const logged = () => {
@@ -56,7 +57,7 @@ const logged = () => {
     // Fetch data from the API here
     const fetchData = async () => {
       try {
-        const response = await fetch('http://127.0.0.1:8000');
+        const response = await fetch(HOME_API);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }

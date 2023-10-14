@@ -4,6 +4,7 @@ import { Close } from '@mui/icons-material';
 import React, {useState, useEffect} from 'react'
 import Image from 'next/image';
 import {Button, Topbar } from '@/components'
+import { USER_API } from '@/apiConfig';
 
 const ProgProfile = ({isVisible, onClose}, props) => {
 
@@ -18,7 +19,7 @@ const ProgProfile = ({isVisible, onClose}, props) => {
     useEffect(() => {
       const fetchData = async () => {
         try {
-          const response = await fetch(`http://127.0.0.1:8000/${props.username}/`);
+          const response = await fetch(USER_API(props.username));
           if (!response.ok) {
             throw new Error('Network response was not ok');
           }

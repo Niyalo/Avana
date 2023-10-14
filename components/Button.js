@@ -7,9 +7,9 @@ const Button = (props) => {
     {
         case "logout":
             return(
-                <div className='buttons py-2 px-3 border-secondary bg-white50'>
-                    <Logout className="text-base text-primary" />
-                    <p className='text-primary text-sm'>Logout</p>
+                <div className='buttons border-secondary bg-white50'>
+                    <Logout className="text-lg text-primary" />
+                    <p className='text-primary'>Logout</p>
                 </div>
             )
 

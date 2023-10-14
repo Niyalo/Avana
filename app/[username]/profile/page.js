@@ -7,6 +7,7 @@ import { LocationCity, Mail, Phone } from '@mui/icons-material';
 import { usePathname } from 'next/navigation';
 import projects from '@/content/projects';
 import toast from 'react-hot-toast';
+import { USER_API } from '@/apiConfig';
 
 
 const profile = () => {
@@ -29,7 +30,7 @@ const profile = () => {
     }
 
     try {
-      const response = await fetch('http://127.0.0.1:8000/request_enroll/', {
+      const response = await fetch(ENROLL_REQUESTS_API, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -53,7 +54,7 @@ const profile = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`http://127.0.0.1:8000/${username}/`);
+        const response = await fetch(USER_API(username));
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -70,7 +71,7 @@ const profile = () => {
     };
   
     fetchData(); // Call the fetch function when the component mounts
-  }, [userData]);
+  }, [handleRequest]);
 
 
     const enrolledProjects = userData.enrolled_projects? userData.enrolled_projects
@@ -110,13 +111,12 @@ const profile = () => {
                   }
                 );
               }}
-            >{!items.project_status === "R" && <Button label="Request Enrollment" type= "add" className='text-sm'/>}</div>
+            ><Button label="Request Enrollment" type= "add" className='text-sm'/></div>
         </div>
         </div>
     )):<p className='w-full px-8 pb-4 text-grey50'> No projects available at the moment. </p>
 
-    const requestedProjects = userData.requested_Projects? userData.requested_Projects
-    .filter(items => items.project_status === 'R')
+    const requestedProjects = userData.requested_projects? userData.requested_projects
     .map(items => (
         <div className="w-full px-8 py-4 border-t border-b border-zinc-400 justify-start items-center gap-6 inline-flex hover:shadow-sm hover:scale-[1.01] hover:bg-white100">
         <div className="grow shrink basis-0 justify-between items-center flex">

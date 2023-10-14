@@ -6,6 +6,7 @@ import Link from 'next/link';
 import Button from './Button';
 import { useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
+import { LOGIN_API } from '@/apiConfig';
 
 const Login = ({TocPopup}) => {
 
@@ -32,7 +33,7 @@ const Login = ({TocPopup}) => {
         e.preventDefault();
               
         try {
-          const response = await fetch('http://localhost:8000/login/', {
+          const response = await fetch(LOGIN_API, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
