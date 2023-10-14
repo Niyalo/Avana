@@ -32,7 +32,7 @@ const Login = ({TocPopup}) => {
         e.preventDefault();
               
         try {
-          const response = await fetch('https://retoolapi.dev/2HluCH/data', {
+          const response = await fetch('http://localhost:8000/login/', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -40,13 +40,14 @@ const Login = ({TocPopup}) => {
             body: JSON.stringify(form),
           });
           
-          const errorData = await response.json();
-          if(response.ok){
+        //   const errorData = await response.json();
+          if(response.status === 200){
             toast.success("Logging In")
             setErrorMsg(false)
             router.push(`/${form.username}`)
          }
          if(response.status === 302){
+            toast.success("Logging In As Administrator")
             setErrorMsg(false)
             router.push(`/useradmin/${form.username}/na`)
          }else {

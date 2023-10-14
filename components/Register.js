@@ -24,8 +24,7 @@ const Register = ({isVisible, onClose}) => {
         phone: '',
         username: '',
         gender: '',
-        img:'',
-        verified: false
+        img:''
     })
 
     console.log(selectedImage)

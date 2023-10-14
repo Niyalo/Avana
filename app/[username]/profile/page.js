@@ -36,7 +36,7 @@ const profile = () => {
         },
         body: JSON.stringify(requestData),
       })
-     
+     console.log(response)
       if (response.ok) {
        toast.error('Succesfully Requested Enrollment');
       } else {
@@ -67,7 +67,7 @@ const profile = () => {
 
 
     const enrolledProjects = userData.enrolled_projects? userData.enrolled_projects
-    .filter((items) => items.project_status === `${projectStatus === 1? "C": projectStatus === 2? "X" : projectStatus === 3? "Y" : ""}`)
+    .filter((items) => items.project_status === `${projectStatus === 1? "A": projectStatus === 2? "C" : projectStatus === 3? "S" : ""}`)
     .map(items => (
         <div className="w-full px-8 py-4 border-t border-b border-zinc-400 justify-start items-center gap-6 inline-flex hover:shadow-sm hover:scale-[1.01] hover:bg-white100">
         <div className="grow shrink basis-0 justify-between items-center flex">
@@ -80,7 +80,9 @@ const profile = () => {
         </div>
     )):null
 
-    const availableProjects = userData.not_enrolled_projects? userData.not_enrolled_projects.map(items => (
+    const availableProjects = userData.not_enrolled_projects? userData.not_enrolled_projects
+    .filter(items => items.project_status == 'A')
+    .map(items => (
         <div className="w-full px-8 py-4 border-t border-b border-zinc-400 justify-start items-center gap-6 inline-flex hover:shadow-sm hover:bg-white100">
         <div className="grow shrink basis-0 justify-between items-center flex">
             <div className="flex-col justify-start items-start gap-1 inline-flex">
@@ -92,7 +94,7 @@ const profile = () => {
                 toast(
                   (t) => (
                     <div className='flex flex-col gap-4 items-center'>
-                      <p>Request {items.name} ?</p>
+                      <p>Request {items.project_name} ?</p>
                       <div className='flex w-full justify-between'>
                         <button onClick={() => {handleRequest(items.project_name); toast.dismiss(t.id)}} className='bg-green border p-2 text-white0'>Request</button>
                         <button onClick={() => toast.dismiss(t.id)} className='bg-white100 border p-2'>Dismiss</button>
