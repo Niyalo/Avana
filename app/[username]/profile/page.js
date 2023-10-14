@@ -1,7 +1,7 @@
 "use client";
 
 import { Header, Topbar, Button } from '@/components'
-import React,{useState, useEffect} from 'react'
+import React,{useState, useEffect, useRef} from 'react'
 import Image from 'next/image'
 import { LocationCity, Mail, Phone } from '@mui/icons-material';
 import { usePathname } from 'next/navigation';
@@ -47,6 +47,8 @@ const profile = () => {
 
     }
   };
+
+  const initialData = useRef(userData);
   
   useEffect(() => {
     const fetchData = async () => {
@@ -56,18 +58,23 @@ const profile = () => {
           throw new Error('Network response was not ok');
         }
         const data = await response.json();
-        setUserData(data); // Update state with fetched data
+  
+        // Check if the data has changed significantly before updating state.
+        if (JSON.stringify(data) !== JSON.stringify(initialData.current)) {
+          setUserData(data);
+          initialData.current = data;
+        }
       } catch (error) {
         console.error('Error fetching data:', error);
       }
     };
-
+  
     fetchData(); // Call the fetch function when the component mounts
   }, [userData]);
 
 
     const enrolledProjects = userData.enrolled_projects? userData.enrolled_projects
-    .filter((items) => items.project_status === `${projectStatus === 1? "A": projectStatus === 2? "C" : projectStatus === 3? "S" : ""}`)
+    .filter((items) => items.project_status === `${projectStatus === 1? "A": projectStatus === 2? "C" : projectStatus === 3? "S" : projectStatus === 4? "R": ""}`)
     .map(items => (
         <div className="w-full px-8 py-4 border-t border-b border-zinc-400 justify-start items-center gap-6 inline-flex hover:shadow-sm hover:scale-[1.01] hover:bg-white100">
         <div className="grow shrink basis-0 justify-between items-center flex">
@@ -103,7 +110,7 @@ const profile = () => {
                   }
                 );
               }}
-            >{items.project_status === "P" ? <p>Pending...</p> :<Button label="Request Enrollment" type= "add" className='text-sm'/>}</div>
+            >{!items.project_status === "R" && <Button label="Request Enrollment" type= "add" className='text-sm'/>}</div>
         </div>
         </div>
     )):null
@@ -127,7 +134,7 @@ const profile = () => {
             </div>
             <div className='flex h-full gap-6 w-full'>
                 <div className='bg-white50 shadow-lg h-full w-full rounded-sm relative'>
-                    <Topbar label1="Current" label2="Completed" label3="Cancelled" onToggle={handleFilter}/>
+                    <Topbar label1="Current" label2="Completed" label3="Cancelled" label4="Pending" onToggle={handleFilter}/>
                     <div className='flex flex-col mt-4 h-5/6 w-full overflow-y-auto overflow-x-hidden'>
                         {enrolledProjects}
                     </div>

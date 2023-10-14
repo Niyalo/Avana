@@ -52,10 +52,10 @@ const Login = ({TocPopup}) => {
             toast.success("Logging In As Administrator")
             setErrorMsg(false)
             router.push(`/useradmin/${form.username}/na`)
-         }else {
-            throw(errorData)
+         }if(!response.ok) {
+            throw(data.error)
           }
-        }catch (errorData) {
+        }catch (error) {
             setLoading(false)
           setErrorMsg(true)
           toast.error("Invalid Credentials")
