@@ -6,7 +6,7 @@ import Image from 'next/image';
 import {Button, Topbar } from '@/components'
 import { APPLICATIONS_API } from '@/apiConfig';
 
-const NewApplications = ({username, onClose}) => {
+const NewApplications = ({isVisible, username, onClose}) => {
 
     const [applicant, setApplicant] = useState([]);
 
@@ -114,7 +114,7 @@ const NewApplications = ({username, onClose}) => {
         </div>
     )):null
 
-    if(username === "") return null;
+    if(!isVisible) return null;
 
     const handleClose = (e) => {
         if(e.target.id === "closer") onClose()
