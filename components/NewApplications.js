@@ -4,7 +4,7 @@ import { Close } from '@mui/icons-material';
 import React, { useEffect, useState } from 'react'
 import Image from 'next/image';
 import {Button, Topbar } from '@/components'
-import { APPLICATIONS_API } from '@/apiConfig';
+import { ACCEPT_APPLICATION_API, APPLICATIONS_API, REJECT_APPLICATION_API } from '@/apiConfig';
 import toast from 'react-hot-toast';
 
 const NewApplications = ({isVisible, username, onClose}) => {
@@ -61,6 +61,7 @@ const NewApplications = ({isVisible, username, onClose}) => {
     const requestData = {
       username: username
     }
+
 
     try {
       const response = await fetch(REJECT_APPLICATION_API, {
@@ -131,8 +132,8 @@ const NewApplications = ({isVisible, username, onClose}) => {
                         <h3 className='text-primary'>{username}</h3>
                     </div>
                     <div className='flex gap-4'>
-                        <div onClick={handleAccept(username)}><Button label="Accept" type="accept" /></div>
-                        <div onClick={handleReject(username)}><Button label="Decline" type="decline" /></div>
+                        <div onClick={() => handleAccept(username)}><Button label="Accept" type="accept" /></div>
+                        <div onClick={() => handleReject(username)}><Button label="Decline" type="decline" /></div>
                     </div>
                 </div>
                 <div onClick={() => onClose()}><Close className='text-3xl hover:scale-105 border bg-red cursor-pointer rounded-sm text-white50'/></div>
