@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react'
 import Image from 'next/image';
 import {Button, Topbar } from '@/components'
 import { APPLICATIONS_API } from '@/apiConfig';
+import toast from 'react-hot-toast';
 
 const NewApplications = ({isVisible, username, onClose}) => {
 

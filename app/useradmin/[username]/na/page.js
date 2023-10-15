@@ -3,28 +3,9 @@
 import React,{useState, useEffect} from 'react'
 import { Button, NewApplications } from '@/components'
 import { ACCEPT_APPLICATION_API, APPLICATIONS_API, REGISTER_INFO_API, REJECT_APPLICATION_API } from '@/apiConfig';
+import toast from 'react-hot-toast';
 
 const na = () => {
-
-  const [applications, setApplications] = useState([]);
-
-  useEffect(() => {
-    // Fetch data from the API here
-    const fetchData = async () => {
-      try {
-        const response = await fetch(APPLICATIONS_API);
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        const data = await response.json();
-        setApplications(data); // Update state with fetched data
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
-
-    fetchData();
-  }, []);
 
   const handleAccept = async (username) => {
 
@@ -78,6 +59,27 @@ const na = () => {
     }
   };
 
+  const [applications, setApplications] = useState([]);
+
+  useEffect(() => {
+    // Fetch data from the API here
+    const fetchData = async () => {
+      try {
+        const response = await fetch(APPLICATIONS_API);
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        setApplications(data); // Update state with fetched data
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+ 
   const [popup, setPopup] = useState(false)
   const [applicant, setApplicant] = useState("")
 
@@ -86,7 +88,7 @@ const na = () => {
   }
 
   const applicationList = applications? applications.map(items => (
-    <div id='popupOpener' onClick={() => {handlePopup(items.username); setApplicant(items.username)}} className="cursor-pointer w-full px-8 py-4 border bg-white0 border-grey50 rounded-sm justify-start items-center gap-6 inline-flex hover:shadow-sm hover:bg-white50">
+    <div id='popupOpener' onClick={() => {handlePopup; setApplicant(items.username)}} className="cursor-pointer w-full px-8 py-4 border bg-white0 border-grey50 rounded-sm justify-start items-center gap-6 inline-flex hover:shadow-sm hover:bg-white50">
     <p id='popupOpener' className="text-sm">{items.id}</p>
     <div id='popupOpener' className="grow shrink basis-0 justify-between items-center flex">
         <div id='popupOpener' className="flex-col justify-start items-start gap-1 inline-flex">
