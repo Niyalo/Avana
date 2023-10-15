@@ -20,7 +20,7 @@ const NewApplications = ({isVisible, username, onClose}) => {
           throw new Error('Network response was not ok');
         }
         const data = await response.json();
-        const userData = data.filter((user) => user.username === username);
+        const userData = data.filter((user) => user.username === `${username}`);
         setApplicant(data); // Update state with fetched data
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -28,7 +28,7 @@ const NewApplications = ({isVisible, username, onClose}) => {
     };
 
     fetchData(); // Call the fetch function when the component mounts
-  }, []);
+  }, [username]);
 
   const handleAccept = async (username) => {
 

@@ -83,7 +83,7 @@ const na = () => {
   const [popup, setPopup] = useState(false)
   const [applicant, setApplicant] = useState("")
 
-  const handlePopup = (username) => {
+  const handlePopup = (e, username) => {
     if (e.target.id === "popupOpener") {
       setApplicant(username);
       setPopup(true);
@@ -91,7 +91,7 @@ const na = () => {
   };
 
   const applicationList = applications? applications.map(items => (
-    <div id='popupOpener' onClick={() => handlePopup(items.username, e)} className="cursor-pointer w-full px-8 py-4 border bg-white0 border-grey50 rounded-sm justify-start items-center gap-6 inline-flex hover:shadow-sm hover:bg-white50">
+    <div id='popupOpener' onClick={(e) => handlePopup(e, items.username)} className="cursor-pointer w-full px-8 py-4 border bg-white0 border-grey50 rounded-sm justify-start items-center gap-6 inline-flex hover:shadow-sm hover:bg-white50">
     <p id='popupOpener' className="text-sm">{items.id}</p>
     <div id='popupOpener' className="grow shrink basis-0 justify-between items-center flex">
         <div id='popupOpener' className="flex-col justify-start items-start gap-1 inline-flex">

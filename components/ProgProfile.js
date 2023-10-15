@@ -6,7 +6,7 @@ import Image from 'next/image';
 import {Button, Topbar } from '@/components'
 import { USER_API } from '@/apiConfig';
 
-const ProgProfile = ({isVisible, onClose}, props) => {
+const ProgProfile = ({isVisible, onClose, username}) => {
 
     const [userData, setUserData] = useState([]);
 
@@ -19,7 +19,7 @@ const ProgProfile = ({isVisible, onClose}, props) => {
     useEffect(() => {
       const fetchData = async () => {
         try {
-          const response = await fetch(USER_API(props.username));
+          const response = await fetch(USER_API(username));
           if (!response.ok) {
             throw new Error('Network response was not ok');
           }
@@ -31,7 +31,7 @@ const ProgProfile = ({isVisible, onClose}, props) => {
       };
   
       fetchData(); // Call the fetch function when the component mounts
-    }, []);
+    }, [username]);
 
     
     const enrolledProjects = userData.enrolled_projects? userData.enrolled_projects
@@ -40,7 +40,7 @@ const ProgProfile = ({isVisible, onClose}, props) => {
         <div className="w-full px-8 py-4 border-t border-b border-zinc-400 justify-start items-center gap-6 inline-flex hover:shadow-sm hover:scale-[1.01] hover:bg-white100">
         <div className="grow shrink basis-0 justify-between items-center flex">
             <div className="flex-col justify-start items-start gap-1 inline-flex">
-                <p>{items.project_namename}</p>
+                <p>{items.project_name}</p>
                 <p className='text-sm overflow-hidden'>{items.project_description}</p>
             </div>
             <Button label="Learn more" type= "text" />
