@@ -5,3 +5,6 @@ export const REGISTER_INFO_API = `${API_BASE_URL}/register_info`;
 export const LOGIN_API = `${API_BASE_URL}/login`;
 export const HOME_API = `${API_BASE_URL}`;
 export const USER_API = (username) => `${API_BASE_URL}/${username}`;
+export const APPLICATIONS_API = `${API_BASE_URL}/applications`;
+export const ACCEPT_APPLICATION_API = `${API_BASE_URL}/accept_application`;
+export const REJECT_APPLICATION_API = `${API_BASE_URL}/reject_application`;
