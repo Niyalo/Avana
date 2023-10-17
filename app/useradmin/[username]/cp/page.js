@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { Button } from '@/components';
 import toast from 'react-hot-toast';
+import { CREATE_PROJECT_API } from '@/apiConfig';
 
 const CreateProject = () => {
   const [project, setProject] = useState({
@@ -33,7 +34,7 @@ const CreateProject = () => {
     e.preventDefault();
     
     try {
-      const response = await fetch(MAIL_PP_API, {
+      const response = await fetch(CREATE_PROJECT_API, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -48,7 +49,7 @@ const CreateProject = () => {
           toast.error('Couldn\'t create the project.');
         }
     } catch (error) {
-      toast.error('Error sending mail. Please check your internet connection.');
+      toast.error('Error creating Project. Please check your internet connection.');
     }
   };
 
@@ -115,7 +116,7 @@ const CreateProject = () => {
               />
             </div>
             <div className="flex flex-col gap-2 h-max">
-              <h4 className="text-primary">Upload Section Image</h4>
+              <h4 className="text-primary">Upload Section Image (optional)</h4>
               <input
                 type="file"
                 accept="image/*"

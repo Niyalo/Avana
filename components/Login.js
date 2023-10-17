@@ -53,7 +53,7 @@ const Login = ({TocPopup}) => {
             toast.success("Logging In As Administrator")
             setErrorMsg(false)
             router.push(`/useradmin/${form.username}/na`)
-         }if(!response.ok) {
+         } else {
             throw(data.error)
           }
         }catch (error) {
