@@ -95,7 +95,7 @@ const na = () => {
     <p id='popupOpener' className="text-sm">{items.id}</p>
     <div id='popupOpener' className="grow shrink basis-0 justify-between items-center flex">
         <div id='popupOpener' className="flex-col justify-start items-start gap-1 inline-flex">
-            <p id='popupOpener' className='text-sm'>Request By: {items.first_name} {items.last_name}</p>
+            <p id='popupOpener'>Request By: {items.first_name} {items.last_name}</p>
         </div>
         <div className='flex gap-2'>
             <div onClick={() => handleAccept(items.username)}><Button label="none" type="accept"/></div>

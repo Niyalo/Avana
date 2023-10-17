@@ -30,7 +30,7 @@ const pp = () => {
     };
 
     fetchData(); // Call the fetch function when the component mounts
-  }, [profile]);
+  }, []);
 
     const [popupProg, setPopupProg] = useState(false)
     const [popupArch, setPopupArch] = useState(false)

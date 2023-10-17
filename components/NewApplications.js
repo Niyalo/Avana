@@ -21,7 +21,7 @@ const NewApplications = ({isVisible, username, onClose}) => {
         }
         const data = await response.json();
         const userData = data.filter((user) => user.username === `${username}`);
-        setApplicant(data); // Update state with fetched data
+        setApplicant(userData); // Update state with fetched data
       } catch (error) {
         console.error('Error fetching data:', error);
       }
