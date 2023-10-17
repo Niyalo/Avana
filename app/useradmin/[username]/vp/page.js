@@ -40,7 +40,7 @@ const vp = () => {
         <div className="grow shrink basis-0 justify-between items-center flex">
             <div className="flex-col justify-start items-start gap-1 inline-flex">
                 <p>{items.project_name}</p>
-                <p className='text-sm'>Assigned to: {items.current_members? items.current_members.map(items => (<span>{items.name} | </span>)):null}</p>
+                <p className='text-sm'>Assigned to: {items.current_members? items.current_members.map(items? items => (<span>{items.name} | </span>): <p>Unassigned</p>):null}</p>
             </div>
             <div onClick={() => setPopup(true)}><Button label={`${items.assgn=="Unassigned"? `Enroll Programmers` : `Edit Programmers`}`} type= {`${items.assgn=="Unassigned"? `add` : `edit`}`} /></div>
         </div>
