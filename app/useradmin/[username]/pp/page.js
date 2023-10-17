@@ -82,11 +82,11 @@ const pp = () => {
   return (
     <div className='adminContent relative flex flex-col gap-6'>
       <h2 className='px-2'>Programmers Profile</h2>
+      <Topbar label1="Programmers" label2="Architects" onToggle={handleFilter} />
       <div className='flex flex-col gap-2 overflow-y-scroll overflow-x-auto px-2 pr-4'>
         {toggle ===1 && programmers}
         {toggle ===2 && architects}
       </div> 
-      <Topbar label1="Programmers" label2="Architects" onToggle={handleFilter} />
       <ArchProfile username={architect} isVisible={popupArch} onClose={() => setPopupArch(false)}/>
       <ProgProfile username={programmer} isVisible={popupProg} onClose={() => setPopupProg(false)}/>
       <Mail isVisible={popupMail} onClose={() => setPopupMail(false)} username={programmer}/>

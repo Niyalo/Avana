@@ -3,21 +3,21 @@
 import React, {useState, useEffect} from 'react'
 import { Button } from '@/components'
 import toast from 'react-hot-toast'
-import { GET_ENROLL_REQUESTS_API } from '@/apiConfig'
+import { ACCEPT_ENROLLMENT_API, GET_ENROLL_REQUESTS_API, REJECT_ENROLLMENT_API } from '@/apiConfig'
 
 const er = () => {
 
   const [enrollReqs, setEnrollReqs] = useState([]);
 
-  const handleAccept = async (project, employee) => {
+  const handleAccept = async (project, username) => {
 
     const requestData = {
       project: project, 
-      employee: employee
+      username: username
     }
 
     try {
-      const response = await fetch(ACCEPT_APPLICATION_API, {
+      const response = await fetch(ACCEPT_ENROLLMENT_API, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -36,15 +36,15 @@ const er = () => {
     }
   };
 
-  const handleReject = async (project, employee) => {
+  const handleReject = async (project, username) => {
 
     const requestData = {
       project: project, 
-      employee: employee
+      username: username
     }
 
     try {
-      const response = await fetch(REJECT_APPLICATION_API, {
+      const response = await fetch(REJECT_ENROLLMENT_API, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -89,8 +89,8 @@ const er = () => {
             <p className='text-sm'>Request By: {items.employee}</p>
         </div>
         <div className='flex gap-2'>
-            <div onClick={() => handleAccept(items.project, items.employee)}><Button label="none" type="accept"/></div>
-            <div onClick={() => handleReject(items.project, items.employee)}><Button label="none" type="decline"/></div>
+            <div onClick={() => handleAccept(items.project, items.username)}><Button label="none" type="accept"/></div>
+            <div onClick={() => handleReject(items.project, items.username)}><Button label="none" type="decline"/></div>
         </div>
     </div>
     </div>
