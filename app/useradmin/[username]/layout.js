@@ -11,7 +11,7 @@ export default function admin({ children }) {
   return (
     <section className='main w-screen h-screen relative flex flex-col py-2 gap-4'>
         <Header username={username}/>
-        <div className='flex w-full h-full gap-6'>
+        <div className='flex w-full h-full gap-6 overflow-hidden'>
             <AdminNavbar username={username}/>
             {children}
         </div>

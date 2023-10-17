@@ -1,13 +1,36 @@
 "use client";
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation';
 
 
 const AdminNavbar = (props) => {
-
+  const currentPath = usePathname()
   const [toggle, setToggle] = useState(0)
+
+  const updateSelectedSection = () => {
+    if (currentPath === `/useradmin/${props.username}/na`) {
+      setToggle(1);
+    } else if (currentPath === `/useradmin/${props.username}/tac`) {
+      setToggle(2);
+    } else if (currentPath === `/useradmin/${props.username}/pp`) {
+      setToggle(3);
+    } else if (currentPath === `/useradmin/${props.username}/cp`) {
+      setToggle(4);
+    } else if (currentPath === `/useradmin/${props.username}/vp`) {
+      setToggle(5);
+    } else if (currentPath === `/useradmin/${props.username}/er`) {
+      setToggle(6);
+    }
+  };
+
+
+  // Use useEffect to update the selected section when the route changes
+  useEffect(() => {
+    updateSelectedSection();
+  }, []);
 
   function handleClick(prop){
     setToggle(prevToggle => prevToggle=prop)
