@@ -46,7 +46,6 @@ const tac = () => {
     <div className='adminContent flex flex-col gap-6'>
         <div className='flex justify-between items-center'>
             <h2 className='px-2'>Terms and Conditions</h2>
-            <Button type="primary" label="Send to all"/>
         </div>
         <div className='flex w-full flex-col gap-6 overflow-y-scroll'>
             {tacList}

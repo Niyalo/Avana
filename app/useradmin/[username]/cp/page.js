@@ -5,18 +5,35 @@ import { Button } from '@/components';
 
 const cp = () => {
 
-  const [form, setForm] = useState({
+  const [project, setProject] = useState({
     projectTitle: '',
     startDate: '',
     endDate: '',
-    sectionTitle:'',
-    sectionImage: '',
-    sectionDesc:''
+    sections:[]
     
 })
 
+// const [sectionData, setSectionData] = useState({
+//   title: '',
+//   description: '',
+//   image: null,
+// });
+
+// const handleAddSection = () => {
+//   setProject((prevProject) => ({
+//     ...prevProject,
+//     sections: [...prevProject.sections, sectionData],
+//   }));
+
+//   setSectionData({
+//     title: '',
+//     description: '',
+//     image: null,
+//   });
+// };
+
 const handleChange = (e) =>{
-    setForm(prevForm => ({
+    setProject(prevProject => ({
         ...form,
         [e.target.name] : e.target.value
     }))
@@ -24,8 +41,8 @@ const handleChange = (e) =>{
 
   const handleFileChange = (e) => {
     const file = e.target.files[0]; // Get the first file from the input
-    setForm((prevForm) => ({
-      ...prevForm,
+    setProject((prevProject) => ({
+      ...prevProject,
       sectionImage: file // Store the file object in the form state
     }));
   };

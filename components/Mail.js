@@ -1,9 +1,46 @@
 import { Close } from '@mui/icons-material';
-import React from 'react'
+import React, { useState } from 'react'
 import Image from 'next/image';
 import {Button, Topbar } from '@/components'
+import { MAIL_PP_API } from '@/apiConfig';
 
-const Mail = ({isVisible, onClose}) => {
+const Mail = ({isVisible, onClose, username}) => {
+
+    const [mail, setMail] = useState({
+        username:`${username}`,
+        subject:'',
+        content:''
+    })
+
+    const handleChange = (e) =>{
+        setMail(prevMail => ({
+            ...form,
+            [e.target.name] : e.target.value
+        }))
+    }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+    
+        try {
+          const response = await fetch(MAIL_PP_API, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(mail),
+          })
+         
+          if (response.ok) {
+            toast.success('Mail sent successfully');
+            onClose()
+          } else {
+              toast.error('Couldn\'t send the mail.');
+            }
+        } catch (error) {
+          toast.error('Error sending mail. Please check your internet connection.');
+        }
+      };
 
     if(!isVisible) return null;
 
@@ -18,15 +55,19 @@ const Mail = ({isVisible, onClose}) => {
                 <h4>Mail to Half Guy</h4>
                 <div onClick={() => onClose()}><Close className='text-3xl hover:scale-105 border bg-red cursor-pointer rounded-sm text-white50'/></div>
             </div>
-            <form className='flex flex-col h-full'>
+            <form className='flex flex-col h-full' onSubmit={handleSubmit}>
                 <input
                     type='text'
                     placeholder='Subject'
+                    name='subject'
+                    onChange={handleChange}
                     className='appearance-none bg-white50 border-t border-b border-grey50 focus:outline-none w-full p-3'
                 />
                 <textarea
                     type='text'
+                    name='content'
                     placeholder='Enter your mail here'
+                    onChange={handleChange}
                     className='appearance-none bg-white50 h-5/6 border-b border-grey50 focus:outline-none w-full p-3'
                 />
                 <input

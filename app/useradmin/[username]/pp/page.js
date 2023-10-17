@@ -41,7 +41,7 @@ const pp = () => {
     }
 
   const programmers = profile.programmers? profile.programmers.map(items => (
-    <div id="popupOpener" onClick={(e) => handlePopup(e, items.name)} className="cursor-pointer w-full px-8 py-4 border bg-white0 border-grey50 rounded-sm justify-start items-center gap-6 inline-flex hover:shadow-sm hover:scale-[1.01] hover:bg-white100">
+    <div id="popupOpener" onClick={(e) => handlePopup(e, items.username)} className="cursor-pointer w-full px-8 py-4 border bg-white0 border-grey50 rounded-sm justify-start items-center gap-6 inline-flex hover:shadow-sm hover:scale-[1.01] hover:bg-white100">
     <div id="popupOpener" className="grow shrink basis-0 justify-between items-center flex">
         <div id="popupOpener" className='flex gap-4 items-center'>
             <Image id="popupOpener" src="/demo.png" width={50} height={50} layout="fixed" className='border-2 h-[50px] object-cover object-top overflow-hidden rounded-full border-secondary'/>
@@ -50,7 +50,7 @@ const pp = () => {
                 <p id="popupOpener" className='text-sm'>Programmer</p>
             </div>
         </div>
-        <div onClick={()=> setPopupMail(true)}><Button label="none" type='mail'/></div>
+        <div onClick={() => {setPopupMail(true); setProgrammer(items.username)}}><Button label="none" type='mail'/></div>
     </div>
     </div>
   )):null
@@ -62,7 +62,7 @@ const pp = () => {
         {programmers}
       </div> 
       <ProgProfile username={programmer} isVisible={popup} onClose={() => setPopup(false)}/>
-      <Mail isVisible={popupMail} onClose={() => setPopupMail(false)} />
+      <Mail isVisible={popupMail} onClose={() => setPopupMail(false)} username={programmer}/>
     </div>
   )
 }
