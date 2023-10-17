@@ -31,7 +31,7 @@ const er = () => {
           toast.error('Couldn\'t Accept the request');
         }
     } catch (error) {
-      toast.error('Error requesting');
+      toast.error('Couldn\'t Accept the request');
 
     }
   };
@@ -58,7 +58,7 @@ const er = () => {
           toast.error('Couldn\'t Reject the request');
         }
     } catch (error) {
-      toast.error('Error requesting');
+      toast.error('Couldn\'t Reject the request');
 
     }
   };
