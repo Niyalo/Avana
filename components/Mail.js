@@ -1,20 +1,23 @@
+"use client"
+
 import { Close } from '@mui/icons-material';
 import React, { useState } from 'react'
 import Image from 'next/image';
 import {Button, Topbar } from '@/components'
 import { MAIL_PP_API } from '@/apiConfig';
+import toast from 'react-hot-toast';
 
 const Mail = ({isVisible, onClose, username}) => {
 
     const [mail, setMail] = useState({
-        username:`${username}`,
+        username: username,
         subject:'',
         content:''
     })
 
     const handleChange = (e) =>{
         setMail(prevMail => ({
-            ...form,
+            ...prevMail,
             [e.target.name] : e.target.value
         }))
     }
@@ -52,7 +55,7 @@ const Mail = ({isVisible, onClose, username}) => {
     <div id='closer' onClick={handleClose} className='fixed flex w-screen h-screen inset-0 bg-black150 bg-opacity-20 backdrop-blur-sm justify-center items-center'>
         <div className='flex flex-col w-5/6 h-4/5 p-6 bg-white50 gap-8 rounded-sm shadow-lg'>
             <div className='flex justify-between items-center'>
-                <h4>Mail to Half Guy</h4>
+                <h4>Mail to {username}</h4>
                 <div onClick={() => onClose()}><Close className='text-3xl hover:scale-105 border bg-red cursor-pointer rounded-sm text-white50'/></div>
             </div>
             <form className='flex flex-col h-full' onSubmit={handleSubmit}>

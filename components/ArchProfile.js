@@ -7,13 +7,13 @@ import {Button, Topbar } from '@/components'
 import { DELETE_PP_API, UPGRADE_PP_API, USER_API } from '@/apiConfig';
 import toast from 'react-hot-toast';
 
-const ProgProfile = ({isVisible, onClose, username}) => {
+const ArchProfile = ({isVisible, onClose, username}) => {
 
     const [userData, setUserData] = useState([]);
 
     const [projectStatus, setProjectStatus] = useState(1)
 
-    const handleUpgrade = async (username) => {
+    const handleDowngrade = async (username) => {
 
       const requestData = {
         username: username
@@ -29,9 +29,9 @@ const ProgProfile = ({isVisible, onClose, username}) => {
         })
        
         if (response.ok) {
-         toast.success('Succesfully Upgraded to Architect');
+         toast.success('Succesfully Dpgraded to Programmer');
         } else {
-            toast.error('Couldn\'t upgrade to architect');
+            toast.error('Couldn\'t Downgrade to programmer');
           }
       } catch (error) {
         toast.error('Error requesting');
@@ -57,7 +57,7 @@ const ProgProfile = ({isVisible, onClose, username}) => {
         if (response.ok) {
          toast.success('Succesfully Deleted');
         } else {
-            toast.error('Couldn\'t delete the programmer');
+            toast.error('Couldn\'t delete the architect');
           }
       } catch (error) {
         toast.error('Error requesting');
@@ -124,9 +124,9 @@ const ProgProfile = ({isVisible, onClose, username}) => {
                             toast(
                               (t) => (
                                 <div className='flex flex-col gap-4 items-center'>
-                                  <p className='text-left'>Upgrade {userData && userData.firstName} {userData && userData.lastName} to architect?</p>
+                                  <p className='text-left'>Downgrade {userData && userData.firstName} {userData && userData.lastName} to architect?</p>
                                   <div className='flex w-full justify-between gap-2'>
-                                    <button onClick={() => {handleUpgrade(userData.username); toast.dismiss(t.id)}} className='bg-green border p-2 text-white0'>Upgrade</button>
+                                    <button onClick={() => {handleDowngrade(userData.username); toast.dismiss(t.id)}} className='bg-green border p-2 text-white0'>Downgrade</button>
                                     <button onClick={() => toast.dismiss(t.id)} className='bg-white100 border p-2'>Cancel</button>
                                   </div>
                                 </div>
@@ -135,7 +135,7 @@ const ProgProfile = ({isVisible, onClose, username}) => {
                               }
                             );
                           }}
-                        ><Button label="Upgrade to architect" type="accept" /></div>
+                        ><Button label="Downgrade to programmer" type="decline" /></div>
                         <div
                           onClick={() => {
                             toast(
@@ -168,4 +168,4 @@ const ProgProfile = ({isVisible, onClose, username}) => {
   )
 }
 
-export default ProgProfile
+export default ArchProfile

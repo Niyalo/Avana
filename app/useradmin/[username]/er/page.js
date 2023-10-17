@@ -2,16 +2,72 @@
 
 import React, {useState, useEffect} from 'react'
 import { Button } from '@/components'
+import toast from 'react-hot-toast'
+import { GET_ENROLL_REQUESTS_API } from '@/apiConfig'
 
 const er = () => {
 
   const [enrollReqs, setEnrollReqs] = useState([]);
 
+  const handleAccept = async (project, employee) => {
+
+    const requestData = {
+      project: project, 
+      employee: employee
+    }
+
+    try {
+      const response = await fetch(ACCEPT_APPLICATION_API, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(requestData),
+      })
+     
+      if (response.ok) {
+       toast.success('Succesfully Accepted the request');
+      } else {
+          toast.error('Couldn\'t Accept the request');
+        }
+    } catch (error) {
+      toast.error('Error requesting');
+
+    }
+  };
+
+  const handleReject = async (project, employee) => {
+
+    const requestData = {
+      project: project, 
+      employee: employee
+    }
+
+    try {
+      const response = await fetch(REJECT_APPLICATION_API, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(requestData),
+      })
+     
+      if (response.ok) {
+       toast.success('Succesfully Rejected the request');
+      } else {
+          toast.error('Couldn\'t Reject the request');
+        }
+    } catch (error) {
+      toast.error('Error requesting');
+
+    }
+  };
+
   useEffect(() => {
     // Fetch data from the API here
     const fetchData = async () => {
       try {
-        const response = await fetch('localhost:8000/enrollReqs');
+        const response = await fetch(GET_ENROLL_REQUESTS_API);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -27,15 +83,14 @@ const er = () => {
 
   const requestList = enrollReqs? enrollReqs.map(items => (
     <div className="cursor-pointer w-full px-8 py-4 border bg-white0 border-grey50 rounded-sm justify-start items-center gap-6 inline-flex hover:bg-white50">
-    <p className="text-sm">{items.id}</p>
     <div className="grow shrink basis-0 justify-between items-center flex">
         <div className="flex-col justify-start items-start gap-1 inline-flex">
-            <p>{items.name}</p>
-            <p className='text-sm'>Request By: {items.request}</p>
+            <p>{items.project}</p>
+            <p className='text-sm'>Request By: {items.employee}</p>
         </div>
         <div className='flex gap-2'>
-            <Button label="none" type="accept"/>
-            <Button label="none" type="decline"/>
+            <div onClick={() => handleAccept(items.project, items.employee)}><Button label="none" type="accept"/></div>
+            <div onClick={() => handleReject(items.project, items.employee)}><Button label="none" type="decline"/></div>
         </div>
     </div>
     </div>
