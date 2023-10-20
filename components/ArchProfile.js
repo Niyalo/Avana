@@ -30,6 +30,7 @@ const ArchProfile = ({isVisible, onClose, username}) => {
        
         if (response.ok) {
          toast.success('Succesfully Dpgraded to Programmer');
+         window.location.reload()
         } else {
             toast.error('Couldn\'t Downgrade to programmer');
           }
@@ -56,6 +57,7 @@ const ArchProfile = ({isVisible, onClose, username}) => {
        
         if (response.ok) {
          toast.success('Succesfully Deleted');
+         window.location.reload()
         } else {
             toast.error('Couldn\'t delete the architect');
           }

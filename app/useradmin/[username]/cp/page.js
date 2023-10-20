@@ -44,6 +44,7 @@ const CreateProject = () => {
      
       if (response.ok) {
         toast.success('Project Created Successfully');
+        window.location.reload()
         onClose()
       } else {
           toast.error('Couldn\'t create the project.');

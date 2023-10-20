@@ -40,6 +40,7 @@ const profile = () => {
      
       if (response.ok) {
        toast.success('Succesfully Requested Enrollment');
+       window.location.reload()
       } else {
           toast.error('Enrollment Request Failed');
         }

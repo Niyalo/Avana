@@ -47,6 +47,7 @@ const NewApplications = ({isVisible, username, onClose}) => {
      
       if (response.ok) {
        toast.success('Succesfully Accepted');
+       window.location.reload()
       } else {
           toast.error('Couldn\'t Accept the application');
         }
@@ -74,6 +75,7 @@ const NewApplications = ({isVisible, username, onClose}) => {
      
       if (response.ok) {
        toast.success('Succesfully Rejected');
+       window.location.reload()
       } else {
           toast.error('Couldn\'t Reject the application');
         }

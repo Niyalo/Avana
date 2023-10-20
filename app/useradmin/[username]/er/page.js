@@ -27,6 +27,7 @@ const er = () => {
      
       if (response.ok) {
        toast.success('Succesfully Accepted the request');
+       window.location.reload()
       } else {
           toast.error('Couldn\'t Accept the request');
         }
@@ -54,6 +55,7 @@ const er = () => {
      
       if (response.ok) {
        toast.success('Succesfully Rejected the request');
+       window.location.reload()
       } else {
           toast.error('Couldn\'t Reject the request');
         }

@@ -30,6 +30,7 @@ const ProgProfile = ({isVisible, onClose, username}) => {
        
         if (response.ok) {
          toast.success('Succesfully Upgraded to Architect');
+         window.location.reload()
         } else {
             toast.error('Couldn\'t upgrade to architect');
           }
@@ -56,6 +57,7 @@ const ProgProfile = ({isVisible, onClose, username}) => {
        
         if (response.ok) {
          toast.success('Succesfully Deleted');
+         window.location.reload()
         } else {
             toast.error('Couldn\'t delete the programmer');
           }
